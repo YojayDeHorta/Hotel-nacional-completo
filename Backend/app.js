@@ -23,6 +23,7 @@ require('dotenv').config()
 const authRoutes = require('./routes/route');
 const configRoutes = require('./routes/config');
 const roomRoutes = require('./routes/rooms');
+const checkoutRoutes = require('./routes/checkout');
 
 // Conexión a Base de datos
 const uri = process.env.DB_URL;
@@ -36,6 +37,7 @@ mongoose.connect(uri,
 app.use('/api/user', authRoutes)
 app.use('/api/config', configRoutes)
 app.use('/api/habitaciones', roomRoutes)
+app.use('/api/checkout', checkoutRoutes)
 
 
 //modo history de vue

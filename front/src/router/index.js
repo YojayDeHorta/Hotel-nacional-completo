@@ -26,6 +26,12 @@ const routes = [
     meta: {requireAuth: true}
   },
   {
+    path: '/admin/checkout',
+    name: 'checkout',
+    component: () => import( '../views/admin/Checkout.vue'),
+    meta: {requireAuth: true}
+  },
+  {
     path: '/',
     name: 'home',
     component: () => import( '../views/HomeView.vue')
