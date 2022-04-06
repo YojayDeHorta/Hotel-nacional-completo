@@ -2,7 +2,7 @@
     <v-container class='container_tabs mb-5' fluid>
         <v-container class='Comentarios mb-5'>
             <h1 class='text-center mt-3' style=''>Testimonials</h1>
-            <p  style='width:70%;margin: auto;' class='texto_coment mt-5 text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tempor viverra parturient diam sagittis nec cras.</p>
+            <p style='width:70%;margin: auto;' class='texto_coment mt-5 text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tempor viverra parturient diam sagittis nec cras.</p>
         </v-container>
         <v-card class='Tarjetas_Card' elevation='0'>
             <v-toolbar class='Tabs_Circle' color="transparent" elevation='0' dark>
@@ -14,14 +14,14 @@
                     </v-tabs>
                 </template>
             </v-toolbar>
-            <v-tabs-items v-model="tabs" class='Content_Tabs' elevation='0' style='width: 90%;margin: auto;'>
+            <v-tabs-items v-model="tabs" class='Content_Tabs' elevation='0' style='width: 90%;margin: auto;background-color: transparent !important;' >
                 <v-tab-item class='comment'>
                     <v-row class='comment_row'>
                         <v-col class='comment_col' v-for="(comment , n) in Comments_1" :key="n" cols="12" sm='6' md="4">
                             <v-item v-slot="{ active, toggle }">
                                 <v-card class="card_comment d-flex align-center" height="" @click="toggle" elevation='0' style='background-color: transparent;'>
                                     <v-card-text>
-                                        <div class='info_card text-center'>
+                                        <div class='info_card text-center' style="background-color: white !important;padding: 1rem;">
                                             <p>
                                                 {{comment.text}}
                                             </p>
@@ -31,12 +31,14 @@
                                                 </v-icon>
                                             </p>
                                         </div>
-                                        <div class='card_info'>
+                                        <div class='card_info mt-5'>
                                             <div class='text-center' style='margin: auto;'>
-                                                <img :src="comment.url" alt="" style='width: 100%;height: 100%;border-radius:50%;'>
+                                                <img :src="comment.url" alt="" style='border-radius: 50%;'>
                                             </div>
                                             <p class='mt-3' style="margin: 0;padding: 0;">
-                                                {{comment.nombre}}
+                                                <strong>
+                                                    {{comment.nombre}}
+                                                </strong>
                                             </p>
                                             <p style="margin: 0;padding: 0;">
                                                 {{comment. twitter}}
@@ -54,7 +56,7 @@
                             <v-item v-slot="{ active, toggle }">
                                 <v-card class="card_comment d-flex align-center" height="" @click="toggle" elevation='0' style='background-color: transparent;'>
                                     <v-card-text>
-                                        <div class='info_card text-center'>
+                                        <div class='info_card text-center' style="background-color: white !important;padding: 1rem;">
                                             <p>
                                                 {{comment.text}}
                                             </p>
@@ -64,12 +66,14 @@
                                                 </v-icon>
                                             </p>
                                         </div>
-                                        <div class='card_info'>
+                                        <div class='card_info mt-5'>
                                             <div class='text-center' style='margin: auto;'>
                                                 <img :src="comment.url" alt="" style='border-radius:50%;'>
                                             </div>
                                             <p class='mt-3' style="margin: 0;padding: 0;">
-                                                {{comment.nombre}}
+                                                <strong>
+                                                    {{comment.nombre}}
+                                                </strong>
                                             </p>
                                             <p style="margin: 0;padding: 0;">
                                                 {{comment. twitter}}
@@ -81,13 +85,13 @@
                         </v-col>
                     </v-row>
                 </v-tab-item>
-                <v-tab-item class='comment'>
-                    <v-row class='comment_row'>
-                        <v-col class='comment_col' v-for="(comment , n) in Comments_3" :key="n" cols="12" sm='6' md="4">
+                <v-tab-item class='comment' style='background-color: transparent !important;'>
+                    <v-row class='comment_row' style='background-color: transparent !important;'>
+                        <v-col class='comment_col' v-for="(comment , n) in Comments_3" :key="n" cols="12" sm='6' md="4" style='background-color: transparent !important;'>
                             <v-item v-slot="{ active, toggle }">
                                 <v-card class="card_comment d-flex align-center" height="" @click="toggle" elevation='0' style='background-color: transparent;'>
                                     <v-card-text>
-                                        <div class='info_card text-center'>
+                                        <div class='info_card text-center' style="background-color: white !important;padding: 1rem;">
                                             <p>
                                                 {{comment.text}}
                                             </p>
@@ -97,12 +101,14 @@
                                                 </v-icon>
                                             </p>
                                         </div>
-                                        <div class='card_info mb-3' style='background-color: transparent !important;'>
+                                        <div class='card_info mb-3 mt-5' style='background-color: transparent !important;'>
                                             <div class='text-center' style='margin: auto;'>
                                                 <img :src="comment.url" alt="" style='border-radius:50%;'>
                                             </div>
                                             <p class='mt-3' style="margin: 0;padding: 0;">
-                                                {{comment.nombre}}
+                                                <strong>
+                                                    {{comment.nombre}}
+                                                </strong>
                                             </p>
                                             <p style="margin: 0;padding: 0;">
                                                 {{comment. twitter}}
@@ -211,10 +217,60 @@ export default {
 }
 </script>
 <style scoped>
+p {
+    text-align: center !important;
+    font-weight: initial;
+}
+
+
+strong,
+h1 {
+    font-family: 'Epilogue', sans-serif;
+    font-family: 'GFS Didot', serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+
 .Tarjetas_Card {
+    display: flex;
+    flex-direction: column-reverse;
     margin: 0 !important;
     padding: 0 !important;
     #border: 5px solid blue;
+    background-color: transparent !important;
+}
+
+
+.comment {
+    #border: 5px solid red !important;
+    #background-color: transparent !important;
+}
+
+.container_tabs {
+    #background-color: transparent !important;
+    #border: 5px solid blue;
+}
+
+.card_comment {
+    #background-color: transparent !important;
+    #border: 5px solid red;
+}
+
+.card_info {
+    #border: 1px solid red;
+    padding: 0.7rem;
+    #background-color: white !important;
+}
+
+
+
+
+
+/*
+.Tarjetas_Card {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 5px solid blue;
     background-color: transparent !important;
 }
 
@@ -223,7 +279,7 @@ export default {
 .Tabs_Circle {
     margin: none !important;
     padding: none !important;
-    #border: 5px solid green !important;
+    border: 5px solid green !important;
     position: relative;
     top: 26rem !important;
     #margin-top: 5rem;
@@ -233,24 +289,24 @@ export default {
 
 .Content_Tabs {
     background-color: transparent !important;
-    #border: 5px solid purple !important;
+    border: 5px solid purple !important;
     position: relative;
     top: -2rem;
 }
 
 
 .container_tabs {
-    #border: 5px solid black;
+    border: 5px solid black;
     height: 670px;
 }
 
 .card_comment {
-    #border: 5px solid red !important;
+    border: 5px solid red !important;
     #padding: 1.5rem;
 }
 
 .info_card {
-    #border: 5px solid purple;
+    border: 5px solid purple;
     background-color: white !important;
     padding: 0.7rem;
 }
@@ -268,7 +324,7 @@ export default {
 }
 
 
-
+/*
 
 @media (min-width: 601px) and (max-width: 900px) {
 
@@ -315,7 +371,7 @@ export default {
 
 @media (max-width: 600px) {
 
-    .texto_coment{
+    .texto_coment {
         width: 100% !important;
         #margin-top: 2rem;
     }
@@ -346,4 +402,7 @@ export default {
     }
 
 }
+
+
+*/
 </style>

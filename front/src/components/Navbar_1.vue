@@ -34,12 +34,18 @@ export default {
 }
 </script>
 <style scoped>
+
+h4,h5{
+    font-family: 'Epilogue', sans-serif;
+    font-family: 'GFS Didot', serif;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem !important;
+}
+
 .container_navbar_1 {
     background-color: #2c3a52;
     color: white !important;
-    /* #border: 4px solid black; */
     margin: 0;
-    padding:1rem;
 }
 
 .container_navbar_1 .col_navbar{

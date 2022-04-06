@@ -1,65 +1,65 @@
 <template>
-    <v-container class='footer' fluid>
-        <v-row class='row_footer'>
-            <v-col class='col img-col' cols='6' md='2' lg='2'>
+    <div class='footer'>
+        <v-container class='container_footer' fluid>
+            <div class='columna img-col mb-5'>
                 <v-img class='' src='@/assets/logo.jpg' style='width: 100px;'></v-img>
-            </v-col>
-            <v-col class='col about' cols='6' sm='6' md='3' lg='3'>
+            </div>
+            <div class='columna about mb-5'>
                 <h3> About</h3><br>
                 <p>About The Diamond </p>
                 <p>Contact us</p>
                 <p>Latest News</p>
                 <p> Jobs</p>
                 <p> Privacy Policy</p>
-            </v-col>
-            <v-col class='col booking' cols='6' sm='6' md='2' lg='2'>
+            </div>
+            <div class='columna booking mb-5'>
                 <h3>Booking and services</h3> <br>
                 <p> Book Rooms</p>
                 <p> Offers </p>
                 <p>Vacation Packages</p>
                 <p> Gallery </p>
                 <p>Reviews</p>
-            </v-col>
-            <v-col class='col contact' cols='6' sm='6' md='2' lg='2'>
+            </div>
+            <div class='columna contact mb-5'>
                 <h3> Contact Us</h3><br>
                 <p>
-                    Hotel Reservation:
+                    Hotel Reservation: <br>
                     123-456-7890
                 </p>
-            </v-col>
-            <v-col class='col ' cols='12' sm='12' md='2' lg='3'>
-                <h3 class='text-center'>Social</h3> <br>
-                <ul>
-                    <li>
+            </div>
+            <div class='columna redes mb-5' id='social' fluid>
+                <h3>Social</h3> <br>
+                <h4>
+                    <p>
                         <v-btn color="blue-grey" class="ma-2 white--text" icon small style='background-color: #566175 !important'>
                             <v-icon color='white'>
                                 mdi-instagram
                             </v-icon>
                         </v-btn>
-                    </li>
-                    <li>
-                    <li>
+                    </p>
+                    <p>
                         <v-btn color="blue-grey" class="ma-2 white--text" icon small style='background-color: #566175 !important'>
                             <v-icon color='white'>
                                 mdi-twitter
                             </v-icon>
                         </v-btn>
-                    </li>
-                    <li>
+                    </p>
+                    <p>
                         <v-btn color="blue-grey" class="ma-2 white--text" icon small style='background-color: #566175 !important'>
                             <v-icon color='white'>
                                 mdi-facebook
                             </v-icon>
                         </v-btn>
-                    </li>
-                </ul>
-            </v-col>
-        </v-row> <br> <br> <br>
-        <hr style='background: grey;'>
-        <v-row class='mt-5 mb-3'>
-            <h5 class='text-center' style='margin: auto;'>© 2022 Hotel Nacional | All Rights Reserved</h5>
+                    </p>
+                </h4>
+            </div>
+        </v-container>
+        <br>
+        <hr class='derechos_hr' style='background: grey;width: 94%;margin: auto;'>
+        <v-row class='derechos_autor' style="padding: 1.5rem;">
+            <h5 class='text-center' style='margin: auto;padding: 1rem;'>© 2022 Hotel Nacional | All Rights Reserved</h5>
         </v-row>
-    </v-container>
+    </div>
 </template>
 <script type="text/javascript">
 export default {
@@ -67,26 +67,16 @@ export default {
 }
 </script>
 <style scoped>
-.img-col {
-    #border: 5px solid purple;
+h3,
+h5 {
+    font-family: 'Epilogue', sans-serif;
+    font-family: 'GFS Didot', serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-
-.footer {
-    padding: 3.5rem;
-    color: white !important;
-    background-color: #2C3A52;
-    #border: 5px solid black;
+p {
+    font-weight: initial;
 }
-
-.row_footer{
-    #border: 5px solid red;
-}
-
-.col {
-    #border: 5px solid red !important;
-}
-
 
 
 ul {
@@ -110,89 +100,89 @@ p {
 }
 
 
+.footer {
+    color: white !important;
+    background-color: #2C3A52;
+    #border: 5px solid black;
+    padding: 0 !important;
+}
 
-@media (min-width: 577px) and (max-width: 992px) {
-     .footer {
-        padding: 1rem !important;
-        #border: 5px solid red !important;
+.container_footer {
+    margin: auto;
+    width: 94%;
+    padding: 2rem !important;
+    #border: 5px solid black !important;
+    display: flex;
+    flex-wrap: wrap;
+}
 
+
+.container_footer .columna {
+    #border: 5px solid red;
+    width: 20%;
+    text-align: start;
+}
+
+
+.container_footer .redes {
+    #border: 5px solid purple;
+}
+
+.container_footer .redes h4 {
+    #border: 5px solid blue;
+    display: flex;
+    padding: 0 !important;
+    justify-content: center;
+}
+
+.container_footer .redes h3 {
+    position: relative;
+    right: 9%;
+    text-align: center !important;
+}
+
+
+
+.container_footer .redes h4 p {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+@media (max-width: 800px) {
+
+
+    .container_footer {
+        flex-direction: row;
     }
 
-    .row_footer {
-        #border: 5px solid purple;
-        width: 98% !important;
-        margin: auto;
+    .container_footer .columna {
+        #border: 5px solid red;
+        width: 50%;
+        text-align: start;
     }
 
-    .col {
-        #border: 5px solid purple;
-    }
-
-    .img-col , .about{
-        margin-top: 1rem;
+    .about , .contact{
+        text-align: end !important;
+        #margin-top: 5rem;
     }
 
     .booking , .contact{
-        #border: 5px solid red;
-        margin-top:1.5rem ;
+        margin-top: 3rem;
     }
 
-    .about,
-    .about p {
-        text-align: end !important;
+    .redes{
+        margin-top: 3rem;
+        text-align: center !important;
+        width: 100% !important;
     }
 
-    .contact,
-    .contact p {
-        #border: 5px solid red;
-        text-align: end !important;
+    .redes h3{
+        left: 0;
+        right: 0;
     }
 
 
 }
 
 
-
-@media (max-width: 576px) {
-    .footer {
-        padding: 1rem !important;
-        #border: 5px solid red !important;
-
-    }
-
-    .row_footer {
-        #border: 5px solid purple;
-        width: 98% !important;
-        margin: auto;
-    }
-
-    .col {
-        #border: 5px solid purple;
-    }
-
-    .img-col , .about{
-        margin-top: 1rem;
-    }
-
-    .booking , .contact{
-        #border: 5px solid red;
-        margin-top:1.5rem ;
-    }
-
-    .about,
-    .about p {
-        text-align: end !important;
-    }
-
-    .contact,
-    .contact p {
-        #border: 5px solid red;
-        text-align: end !important;
-    }
-
-
-
-
-
-}
 </style>

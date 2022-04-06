@@ -59,11 +59,19 @@
     </div>
 </template>
 <style scoped>
-/*.v-btn::before {
-    background-color: transparent !important;
-}*/
+a {
 
-.a_route{
+    font-family: 'Epilogue', sans-serif;
+    font-family: 'GFS Didot', serif;
+    font-family: 'Poppins', sans-serif;
+
+
+
+}
+
+
+
+.a_route {
     #background-color: transparent !important;
 
 }
@@ -116,7 +124,7 @@ body {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 .active {

@@ -6,36 +6,33 @@
             <anuncio class='anuncio_1'></anuncio>
         </div><br>
         <div class='Marco_Secundario'>
-            <v-container class='Nuestro_Hotel mt-5 mb-5'>
-                <v-row class='img_1 mb-5'>
-                    <v-col class='col mb-5' cols='12' sm='6' lg='6'>
+            <v-container class='Nuestro_Hotel mt-5 mb-5' fluid>
+                <v-row class='row_img'>
+                    <div class='cuadro_texto'>
                         <div>
-                            <h1 class='text-center'>WELCOME TO HOTEL NACIONAL</h1>
-                            <p class='mt-5'> <br>
+                            <h1 class='text-center mt-5'>WELCOME TO HOTEL NACIONAL</h1>
+                            <p> <br>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu magna mauris. Phasellus malesuada turpis nec massa elementum, id consectetur lectus vestibulum. Sed viverra sapien ut elit dapibus, a finibus diam fringilla. In tincidunt molestie odio quis efficitur. Integer fermentum efficitur ligula, a consectetur enim sodales id.
                             </p>
+                            <br>
                         </div>
-                    </v-col>
-                    <br>
-                    <v-col class='col mt-5' cols='12' sm='6' lg='6'>
-                        <v-img class='img' src='@/assets/hotel_1.webp'>
-                        </v-img>
-                    </v-col>
-                </v-row>
-                <br>
-                <v-row class='img_1 mt-5'>
-                    <v-col class='col' cols='12' sm='6' lg='6'>
-                        <v-img class='img' src='@/assets/hotel_2.webp'>
-                        </v-img>
-                    </v-col>
-                    <v-col class='col' cols='12' sm='6' lg='6'>
+                    </div>
+                    <div>
+                        <img src="@/assets/hotel_1.webp" alt="">
+                    </div>
+                </v-row><br>
+                <v-row class='row_img'>
+                    <div>
+                        <img src="@/assets/hotel_2.webp" alt="">
+                    </div>
+                    <div class='cuadro_texto'>
                         <div>
-                            <h1 class='text-center'>OUR HERITAGE</h1>
+                            <h1 class='text-center mt-5'>OUR HERITAGE</h1>
                             <p> <br>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu magna mauris. Phasellus malesuada turpis nec massa elementum, id consectetur lectus vestibulum. Sed viverra sapien ut elit dapibus, a finibus diam fringilla. In tincidunt molestie odio quis efficitur. Integer fermentum efficitur ligula, a consectetur enim sodales id.
                             </p>
                         </div>
-                    </v-col>
+                    </div>
                 </v-row>
             </v-container>
             <v-container fluid>
@@ -53,7 +50,6 @@
                     </v-slide-group>
                 </v-sheet>
             </v-container>
-
             <comments />
         </div>
         <pie_pagina />
@@ -82,6 +78,143 @@ export default {
 }
 </script>
 <style scoped>
+h1 {
+    font-family: 'Epilogue', sans-serif;
+    font-family: 'GFS Didot', serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+p {
+    font-weight: initial;
+}
+
+
+.Marco_Principal {
+    width: 100% !important;
+    overflow: hidden !important;
+    #border: 5px solid purple;
+    background-color: #f8f8f8 !important;
+    #height: auto !important;
+}
+
+.Marco_Secundario {
+    margin: auto;
+    width: 90%;
+    #border: 5px solid blue !important;
+    background-color: #f8f8f8 !important;
+}
+
+.parallax {
+    height: 450px !important;
+    #border: 5px solid red !important;
+}
+
+.parallax img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+}
+
+.Nuestro_Hotel {
+    #border: 5px solid red !important;
+}
+
+.Nuestro_Hotel .row_img {
+    margin-bottom: 3.5rem;
+    #border: 5px solid blue;
+}
+
+.Nuestro_Hotel .row_img div {
+    text-align: center;
+    #border: 5px solid black;
+    width: 50%;
+}
+
+.cuadro_texto {
+    display: flex;
+    justify-content: center;
+    #border: 5px solid purple !important;
+}
+
+.cuadro_texto div {
+    #border: 5px solid red !important;
+    margin: auto;
+    width: 90% !important;
+}
+
+.cuadro_texto div p {
+    text-align: justify !important;
+}
+
+
+.Nuestro_Hotel .row_img img {
+    width: 90%;
+    height: 450px;
+    object-fit: cover;
+}
+
+
+@media (max-width:700px) {
+
+
+
+    .Nuestro_Hotel .row_img div {
+        #border: 5px solid purple;
+        width: 100% !important;
+    }
+
+
+
+
+    /*
+    .Nuestro_Hotel .row_img {
+        #bor
+    }
+
+
+*/
+
+}
+
+
+
+
+
+
+
+
+/*
+
+.Nuestro_Hotel .img_1 {
+    border: 5px solid black;
+}
+
+
+.Nuestro_Hotel .col {
+    border: 5px solid red !important;
+}
+
+.Nuestro_Hotel .img {
+    border: 5px solid purple !important;
+    width: 100% !important;
+    height: 500px !important;
+    object-fit: cover !important;
+}
+
+.container_texto {
+    border: 5px solid purple !important;
+    margin: auto;
+}
+
+.div_texto {
+    border: 5px solid blue;
+    margin: auto;
+}
+
+
+/*
 .Marco_Principal {
     width: 100% !important;
     overflow: hidden !important;
@@ -94,7 +227,7 @@ export default {
     background-color: #f8f8f8 !important;
 }
 
-.Nuestro_Hotel{
+.Nuestro_Hotel {
     #border: 5px solid black !important;
 }
 
@@ -177,43 +310,44 @@ p {
 
 
 @media (min-width:600px) and (max-width:960px) {
-.Nuestro_Hotel{
-    border: 5px solid purple !important;
-}
+    .Nuestro_Hotel {
+        border: 5px solid purple !important;
+    }
 
-.Nuestro_Hotel .img_1{
-    #border: 4px solid red !important;
-    margin-top: 1rem !important;
-    height: auto !important;
-}
+    .Nuestro_Hotel .img_1 {
+        #border: 4px solid red !important;
+        margin-top: 1rem !important;
+        height: auto !important;
+    }
 
-.Nuestro_Hotel .col{
-    border: 5px solid black !important;
-}
-
-
-} 
-
-
-
-@media (max-width:600px) { 
-
-.Nuestro_Hotel{
-    #border: 5px solid purple !important;
-}
-
-.Nuestro_Hotel .img_1{
-    #border: 4px solid red !important;
-    margin-top: 1rem !important;
-    height: auto !important;
-}
-
-.Nuestro_Hotel .col{
-    #border: 5px solid black !important;
-}
-
+    .Nuestro_Hotel .col {
+        border: 5px solid black !important;
+    }
 
 
 }
 
+
+
+@media (max-width:600px) {
+
+    .Nuestro_Hotel {
+        #border: 5px solid purple !important;
+    }
+
+    .Nuestro_Hotel .img_1 {
+        #border: 4px solid red !important;
+        margin-top: 1rem !important;
+        height: auto !important;
+    }
+
+    .Nuestro_Hotel .col {
+        #border: 5px solid black !important;
+    }
+
+
+
+}
+
+*/
 </style>
