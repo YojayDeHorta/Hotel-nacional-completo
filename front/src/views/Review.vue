@@ -59,6 +59,14 @@ export default {
 }
 </script>
 <style scoped>
+h2 {
+    font-family: 'Epilogue', sans-serif;
+    font-family: 'GFS Didot', serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
 .Marco_Secundario {
     background-color: #f8f8f8 !important;
 }
@@ -96,7 +104,7 @@ input {
 }
 
 
-.star_service{
+.star_service {
     display: flex;
     flex-wrap: wrap;
     #border: 5px solid red;

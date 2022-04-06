@@ -16,6 +16,19 @@
     </div>
 </template>
 <style scoped>
+
+
+h1{
+    font-family: 'Epilogue', sans-serif;
+    font-family: 'GFS Didot', serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+p{
+    font-weight: initial;
+}
+
+
 .Marco_Secundario {
     background-color: #f8f8f8 !important;
 }

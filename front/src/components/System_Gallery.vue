@@ -3,7 +3,7 @@
         <v-card elevation='0' style='background-color: #f8f8f8 !important;'>
             <v-toolbar color="transparent" elevation='0' style='background-color: #f8f8f8 !important;'>
                 <template>
-                    <v-tabs  show-arrows class='' v-model="tabs" style='display: flex;justify-content: center; '>
+                    <v-tabs show-arrows class='' v-model="tabs" style='display: flex;justify-content: center; '>
                         <v-tab v-for="i in Tabs_Name" v-bind:key="i">
                             <p class='name_tabs'>
                                 {{i.name}}
@@ -145,6 +145,15 @@ export default {
 }
 </script>
 <style scoped>
+    
+    
+p {
+    font-family: 'Epilogue', sans-serif;
+    font-family: 'GFS Didot', serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+
 .row_gallery {
     #border: 5px solid black;
 }

@@ -65,7 +65,19 @@
                 </v-col>
             </v-row>
         </v-container>
+        <v-container class='footer_book' fluid style='margin: auto;width: 92%;'>
+            <div>
+                <img src="@/assets/logo.jpg" alt="" style='width: 70px;'> 
+            </div>
+            <hr>
+            <div style='display: flex;' class='mt-5'>
+                <p style="width: 50%;">© 2022 Hotel Nacional | All Rights Reserved</p>
+                <p style="width: 50%;text-align: end;">Terms and conditions Privacy policy Security Careers</p>
+            </div>
+        </v-container>
+        <!--
         <pie_pagina />
+    -->
     </div>
 </template>
 <script>
@@ -203,6 +215,27 @@ select:active {
 
 /*----------------------------------*/
 
+
+
+
+.Marco_Secundario{
+    #border: 5px solid red;
+}
+
+
+.column{
+    #border: 5px solid black;
+}
+
+
+.row_container{
+    display: flex;
+    justify-content: center;
+    #margin: auto !important;
+}
+
+
+
 .contenedor_title {
     background-color: #2c3a52;
     color: #c9cded;
@@ -327,28 +360,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     height: 100% !important;
 }
 
-/*
-.v-input__control {
-    border: 4px solid red !important;
-}
 
-
-.v-input__control {
-    border: 4px solid red !important;
-}
-
-
-
-/*
-.text_outline {
-    border: 0px !important;
+.footer_book{
     #border: 5px solid red !important;
-    #height: 40px !important;
-    width: 100% !important;
-    height: auto !important;
 }
 
-/**/
+
+
+
+
+
+
+
+
 @media (max-width: 670px) {
 
 

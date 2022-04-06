@@ -11,7 +11,7 @@
         </div><br>
         <div>
             <div class='title_services mt-5 mb-5'>
-            	<br>
+                <br>
                 <h1 class='text-center mt-5 mb-5'>PREPARADOS PARA ATENDERTE</h1>
                 <p class='text-center mt-5 mb-5'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Error pariatur rem laudantium illo sunt velit! Necessitatibus enim tenetur velit error. Illum beatae, facilis neque ullam, quibusdam hic quis sed accusamus?
@@ -85,21 +85,43 @@
             <v-row class='container_list'>
                 <div class='column'>
                     <ul>
-                        <li class='icon_check'><v-icon>mdi-check-circle</v-icon>&nbsp;  Wifi</li>
-                        <li class='icon_check'><v-icon>mdi-check-circle</v-icon>&nbsp; Aire acondicionado</li>
-                        <li class='icon_check'><v-icon>mdi-check-circle</v-icon>&nbsp; Recepción 24 horas</li>
-                        <li class='icon_check'><v-icon>mdi-check-circle</v-icon>&nbsp; Aparcamiento</li>
-                        <li class='icon_check'><v-icon>mdi-check-circle</v-icon>&nbsp; Aparcacoches las 24h</li>
-                        <li class='icon_check'><v-icon>mdi-check-circle</v-icon>&nbsp; Prensa</li>
+                        <li class='icon_check'>
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; Wifi
+                        </li>
+                        <li class='icon_check'>
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; Aire acondicionado
+                        </li>
+                        <li class='icon_check'>
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; Recepción 24 horas
+                        </li>
+                        <li class='icon_check'>
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; Aparcamiento
+                        </li>
+                        <li class='icon_check'>
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; Aparcacoches las 24h
+                        </li>
+                        <li class='icon_check'>
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; Prensa
+                        </li>
                     </ul>
                 </div>
                 <div class='column'>
                     <ul class='ul_list'>
-                        <li class='icon_check'><v-icon>mdi-check-circle</v-icon>&nbsp; Ascensor</li>
-                        <li class='icon_check'><v-icon>mdi-check-circle</v-icon>&nbsp; Guardaequipajes</li>
-                        <li class='icon_check'><v-icon>mdi-check-circle</v-icon>&nbsp; Servicio de lavandería y planchado</li>
-                        <li class='icon_check'><v-icon>mdi-check-circle</v-icon>&nbsp; Información turística, alquiler de bicicletas y de coches</li>
-                        <li class='icon_check'><v-icon>mdi-check-circle</v-icon>&nbsp; Fax / fotocopiadora</li>
+                        <li class='icon_check'>
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; Ascensor
+                        </li>
+                        <li class='icon_check'>
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; Guardaequipajes
+                        </li>
+                        <li class='icon_check'>
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; Servicio de lavandería y planchado
+                        </li>
+                        <li class='icon_check'>
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; Información turística, alquiler de bicicletas y de coches
+                        </li>
+                        <li class='icon_check'>
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; Fax / fotocopiadora
+                        </li>
                     </ul>
                 </div>
             </v-row>
@@ -108,6 +130,19 @@
     </div>
 </template>
 <style scoped>
+h1 {
+    font-family: 'Epilogue', sans-serif;
+    font-family: 'GFS Didot', serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+p,li {
+    font-weight: initial;
+}
+
+
+
+
 .parallax {
     display: flex !important;
     justify-content: center !important;
@@ -182,47 +217,47 @@ img {
 }
 
 
-.container_list{
-	#border: 6px solid blue;
+.container_list {
+    #border: 6px solid blue;
 }
 
-.container_list div{
-	#border: 5px solid blue;
-	width: 50%;
+.container_list div {
+    #border: 5px solid blue;
+    width: 50%;
 }
 
-.container_list ul{
-	list-style: none;
-	width: 100%;
-	#border: 5px solid red;
-	height: 500px !important;
-	text-align: start;
-	display: flex;
-	flex-direction: column;
-	justify-content: center !important;
+.container_list ul {
+    list-style: none;
+    width: 100%;
+    #border: 5px solid red;
+    height: 500px !important;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
 }
 
-.container_list ul li{
-	position: relative;
-	font-size: 1.2rem !important;
-	left: 27%;
-	top: -5rem;
-	width: 65%;
-	#border: 1px solid red;
-	margin-top: 3rem;
+.container_list ul li {
+    position: relative;
+    font-size: 1.2rem !important;
+    left: 27%;
+    top: -5rem;
+    width: 65%;
+    #border: 1px solid red;
+    margin-top: 3rem;
 
 }
 
 
-.title_services p{
-	margin: auto;
-	width: 70%;
-	#border: 5px solid red;
+.title_services p {
+    margin: auto;
+    width: 70%;
+    #border: 5px solid red;
 }
 
-.ul_list{
-	position: relative;
-	top: -2rem;
+.ul_list {
+    position: relative;
+    top: -2rem;
 }
 
 

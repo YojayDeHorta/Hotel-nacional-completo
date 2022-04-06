@@ -1,8 +1,11 @@
 <template>
     <div class='Marco_Secundario' fluid>
         <navbar_2 />
+        <div class='contenedor_title'>
+            <h2 class='text-center'>Write a Review</h2>
+        </div>
         <br>
-        <h3 class='mt-5 mb-5' style='width: 78%;margin: auto;'>THE OFFERS AT THE HOTEL</h3>
+        <h3 class='mt-5 mb-5' style='width: 89%;margin: auto;'>THE OFFERS AT THE HOTEL</h3>
         <v-container class='table_1 mt-5 mb-5' style='' fluid>
             <v-row class='title_fondo' style='width: 90%;margin: auto;'>
                 <v-col class='column mb-5' cols='12' sm='6' lg='6' style='margin: 0;padding: 0'>
@@ -255,6 +258,26 @@
     </div>
 </template>
 <style type="text/css" scoped>
+
+h2,h3{
+     font-family: 'Epilogue', sans-serif;
+    font-family: 'GFS Didot', serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.contenedor_title {
+    background-color: #2c3a52;
+    color: #c9cded;
+}
+
+.contenedor_title h2 {
+    padding: 2rem;
+}
+
+
+
 .Marco_Secundario {
     background-color: #f8f8f8 !important;
 }
@@ -315,24 +338,23 @@ table p {
 }
 
 
-.Terminos{
+.Terminos {
     #border: 5px solid black;
 }
 
 
-.title_terminos{
+.title_terminos {
     #border: 5px solid red;
     width: 100% !important;
 }
 
-.title_terminos h6{
+.title_terminos h6 {
     background-color: #5d8ade !Important;
     color: white !important;
     width: 100% !important;
     #padding: 1rem;
     font-size: 1rem !important;
 }
-
 </style>
 <script>
 import navbar_2 from '../components/Navbar_2'
