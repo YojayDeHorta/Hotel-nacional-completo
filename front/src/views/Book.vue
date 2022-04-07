@@ -13,19 +13,11 @@
                                 <br>
                                 <div class='div_select' style='padding: 0 !important;margin: 0 !important;display: flex;justify-content: flex-start;'>
                                     <strong class='strong_type_room'>Type of room</strong>
-                                    <!--
-                                    <select class="theme-construction mt-5">
-                                        <option>So many options2</option>
-                                        <option>...</option>
-                                    </select>
-                                -->
-                                    
-                                    <select style='border:2px solid grey' class='form-select text-start mb-5 mt-5' v-model="Reserva">
-                                        <option class='mb-5 mt-5' v-for="habitacion in items_room" v-bind:value="habitacion">
-                                            {{ habitacion.name }}
+                                    <select class='form-select mb-5 mt-5' v-model="Reserva">
+                                        <option class='selected mb-5 mt-5' v-for="habitacion in items_room" v-bind:value="habitacion" style='border: 1px solid red !important;'>
+                                            <select class='mt-5 mb-5' style='border: 5px solid red !important'>{{ habitacion.name }}</select>
                                         </option>
                                     </select>
-                                
                                 </div>
                             </v-col>
                             <v-col class='text-end' cols='6'>
@@ -40,13 +32,13 @@
                             <h3>Check In</h3>
                             <p><input type="time" value="12:00" disabled></p>
                             <p>
-                                <input type="date" min="2017-08-15" max="2018-08-26" step="7">
+                                <input type="date" step="7">
                             </p>
                         </div>
                         <div class='row_table' id='row_table_2'>
                             <h3>Check Out</h3>
                             <p><input type="time" value="14:00" disabled></p>
-                            <p><input type="date" min="2017-08-15" max="2018-08-26" step="7"></p>
+                            <p><input type="date" step="7"></p>
                         </div>
                         <div class='row_table' id='row_table_3'>
                             <h3>Guest</h3>
@@ -67,7 +59,7 @@
         </v-container>
         <v-container class='footer_book' fluid style='margin: auto;width: 92%;'>
             <div>
-                <img src="@/assets/logo.jpg" alt="" style='width: 70px;'> 
+                <img src="@/assets/logo.jpg" alt="" style='width: 70px;'>
             </div>
             <hr>
             <div style='display: flex;' class='mt-5'>
@@ -93,6 +85,7 @@ export default {
     data() {
 
         return {
+            items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
             select: '',
             /*  RESERVA   */
             time_start: '',
@@ -151,65 +144,25 @@ export default {
 <style scoped>
 /*----------------------------------*/
 
-:root {
-    --radius: 2px;
-    --baseFg: dimgray;
-    --baseBg: white;
-    --accentFg: #006fc2;
-    --accentBg: #bae1ff;
-}
-
-.theme-pink {
-    --radius: 2em;
-    --baseFg: #c70062;
-    --baseBg: #ffe3f1;
-    --accentFg: #c70062;
-    --accentBg: #ffaad4;
-}
-
-.theme-construction {
-    --radius: 0;
-    --baseFg: white;
-    --baseBg: black;
-    #--accentFg: black;
-    --accentBg: orange;
-}
 
 select {
-    font: 400 12px/1.3 sans-serif;
-    -webkit-appearance: none;
-    appearance: none;
-    color: var(--baseFg);
-    border: 1px solid var(--baseFg);
-    line-height: 1;
-    outline: 0;
-    padding: 0.65em 2.5em 0.55em 0.75em;
-    border-radius: var(--radius);
-    background-color: var(--baseBg);
-    background-image: linear-gradient(var(--baseFg), var(--baseFg)),
-        linear-gradient(-135deg, transparent 50%, var(--accentBg) 50%),
-        linear-gradient(-225deg, transparent 50%, var(--accentBg) 50%),
-        linear-gradient(var(--accentBg) 42%, var(--accentFg) 42%);
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
-    background-size: 1px 100%, 20px 22px, 20px 22px, 20px 100%;
-    background-position: right 20px center, right bottom, right bottom, right bottom;
+    outline: none !important;
+    border: none !important;
+    border-bottom: 1px solid #2c3a52 !important;
+    background-image: url("@/assets/arrow-down.png");
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-position: center right;
+    width: 50%;
+    padding-left: 0.4rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    cursor:pointer;
+
 }
 
-select:hover {
-    background-image: linear-gradient(var(--accentFg), var(--accentFg)),
-        linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%),
-        linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%),
-        linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
-}
-
-select:active {
-    background-image: linear-gradient(var(--accentFg), var(--accentFg)),
-        linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%),
-        linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%),
-        linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
-    color: var(--accentBg);
-    border-color: var(--accentFg);
-    background-color: var(--accentFg);
+select option{
+    padding: 50px !important;
 }
 
 
@@ -218,17 +171,17 @@ select:active {
 
 
 
-.Marco_Secundario{
+.Marco_Secundario {
     #border: 5px solid red;
 }
 
 
-.column{
+.column {
     #border: 5px solid black;
 }
 
 
-.row_container{
+.row_container {
     display: flex;
     justify-content: center;
     #margin: auto !important;
@@ -240,12 +193,13 @@ select:active {
     background-color: #2c3a52;
     color: #c9cded;
 }
+
 .contenedor_title h2 {
     padding: 2rem;
 }
 
 
-.form-select{
+.form-select {
     position: relative;
     right: 6rem;
     top: 0.5rem;
@@ -259,15 +213,15 @@ select:active {
     background-size: cover;
 }
 
-.theme-construction{
+.theme-construction {
     position: relative;
-    right:6rem !important ;
+    right: 6rem !important;
     top: 1rem;
     #border: 5px solid red;
 }
 
 
-.strong_type_room{
+.strong_type_room {
     position: relative;
     top: -0.5rem !important;
     padding: 0 !important;
@@ -361,7 +315,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 
-.footer_book{
+.footer_book {
     #border: 5px solid red !important;
 }
 
