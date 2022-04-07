@@ -15,7 +15,7 @@
                                     <strong class='strong_type_room'>Type of room</strong>
                                     <select class='form-select mb-5 mt-5' v-model="Reserva">
                                         <option class='selected mb-5 mt-5' v-for="habitacion in items_room" v-bind:value="habitacion" style='border: 1px solid red !important;'>
-                                            <select class='mt-5 mb-5' style='border: 5px solid red !important'>{{ habitacion.name }}</select>
+                                            <span class='mt-5 mb-5' style='border: 5px solid red !important'>{{ habitacion.name }}</span>
                                         </option>
                                     </select>
                                 </div>
