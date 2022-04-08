@@ -40,13 +40,13 @@
                             <h3>Check In</h3>
                             <p><input type="time" value="12:00" disabled></p>
                             <p>
-                                <input type="date" min="2017-08-15" max="2018-08-26" step="7">
+                                <input type="date" min="2017-08-15"  step="7">
                             </p>
                         </div>
                         <div class='row_table' id='row_table_2'>
                             <h3>Check Out</h3>
                             <p><input type="time" value="14:00" disabled></p>
-                            <p><input type="date" min="2017-08-15" max="2018-08-26" step="7"></p>
+                            <p><input type="date" min="2017-08-15" step="7"></p>
                         </div>
                         <div class='row_table' id='row_table_3'>
                             <h3>Guest</h3>
