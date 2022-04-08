@@ -360,7 +360,7 @@ import Configuracion from '../../components/administrador/Configuracion';
            try {
               //  const snapshot= await db.collection('eventos').get();
                const events=[]
-                const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/user/habitaciones/", {
+                const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/-habitaciones/", {
                 headers: {"Content-Type": "application/json","auth-token": this.token }
                 },);
                 const { data, error } = await res.json();    
