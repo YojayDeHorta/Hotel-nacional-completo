@@ -47,10 +47,9 @@ exports.deleteHabitacion= async (req,res)=>{
 }
 
 
-exports.getHabitacionByState= async (req,res)=>{
+exports.getHabitacionByDisponible= async (req,res)=>{
     try {
-        const data = await Habitacion.find({ocupado:true});
-        console.log(data);
+        const data = await Habitacion.find({estado:"Disponible"});
         res.json({error: null,data: data})
     } catch (error) {
         console.log(error);

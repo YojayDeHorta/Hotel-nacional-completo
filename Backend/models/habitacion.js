@@ -24,6 +24,10 @@ const habitacionSchema = mongoose.Schema({
         type: Number,
         required: true,
     },
+    personas: {
+        type: Number,
+        required: true,
+    },
     estado: {
         type: String,
         default: 'Disponible',

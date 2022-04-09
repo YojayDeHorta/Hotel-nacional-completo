@@ -42,8 +42,9 @@
 </template>
 <script>
 import DatePicker from "vue2-datepicker";
-import { mapState } from "vuex";
 import 'vue2-datepicker/index.css';
+import { mapState } from "vuex";
+
 
 export default {
   components: {
