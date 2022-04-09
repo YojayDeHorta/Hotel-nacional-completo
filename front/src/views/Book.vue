@@ -49,7 +49,7 @@
                         </div>
                     </v-container>
                     <v-col class='text-end' cols='12'>
-                        <v-btn class='btn_form' style='background-color:#6c95e1 !important;color: white;' elevation="2" x-large>Confirm</v-btn>
+                        <v-btn class='btn_form' to='/confirm_pago' style='background-color:#6c95e1 !important;color: white;' elevation="2" x-large>Confirm</v-btn>
                     </v-col>
                 </v-col>
                 <v-col class='column d-flex justify-center' cols='12' sm='12' md='5' lg='4'>

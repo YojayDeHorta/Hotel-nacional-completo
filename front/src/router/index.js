@@ -66,6 +66,12 @@ const routes = [
     name: 'services',
     
     component: () => import( '../views/Services.vue')
+  },
+     {
+    path: '/confirm_pago',
+    name: 'confirm_pago',
+    
+    component: () => import( '../views/Confirm_Pago.vue')
   }
 ]
 
