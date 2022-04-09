@@ -4,6 +4,6 @@ const validateToken= require("../controllers/validate-token")
 
 
 router.post('/fechanothabitable',validateToken, configController.addFechaNotAvitable)
-router.get('/fechanothabitable',validateToken, configController.getFechaNotAvitable)
+router.get('/fechanothabitable', configController.getFechaNotAvitable)
 router.delete('/fechanothabitable',validateToken, configController.deleteFechaNotAvitable)
 module.exports = router;

@@ -61,6 +61,12 @@ const routes = [
     
     component: () => import( '../views/Book.vue')
   },
+  {
+    path: '/bookfuncional',
+    name: 'bookfuncional',
+    
+    component: () => import( '../views/Bookfuncional.vue')
+  },
     {
     path: '/services',
     name: 'services',

@@ -75,6 +75,9 @@
               <v-col md="4">
                   <v-text-field type="number" label="Precio" v-model="room.precio"  required></v-text-field>
               </v-col>
+              <v-col md="4">
+                  <v-text-field type="number" label="Personas" v-model="room.personas"  required></v-text-field>
+              </v-col>
           </v-row>
               <v-spacer></v-spacer>
               <v-card-actions>
@@ -124,6 +127,7 @@ export default {
         tipo_habitacion:'',
         servicio:'',
         precio:0,
+        personas:0,
         ocupado:false
       },
       otro_habitacion:'',
