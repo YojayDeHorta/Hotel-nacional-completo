@@ -32,13 +32,16 @@
                             <h3>Check In</h3>
                             <p><input type="time" value="12:00" disabled></p>
                             <p>
-                                <date-picker v-model="date " type="date" range :disabled-date="disabledRange" @change="checkOnRange()"></date-picker>
+                                <!-- <date-picker class="fechaInput" v-model="date " type="date" range :disabled-date="disabledRange" @change="checkOnRange()"></date-picker> -->
+                                <date-picker class="fechaInput" v-model="date.start" type="date" :disabled-date="disabledRange" @change="checkOnRange()"></date-picker>
                             </p>
                         </div>
                         <div class='row_table' id='row_table_2'>
                             <h3>Check Out</h3>
                             <p><input type="time" value="14:00" disabled></p>
-                            <p><input type="date" step="7"></p>
+                            <p>
+                                <date-picker class="fechaInput" v-model="date.end" type="date" :disabled="!date.start" :disabled-date="disabledRange" @change="checkOnRange()"></date-picker>
+                            </p>
                         </div>
                         <div class='row_table' id='row_table_3'>
                             <h3>Guest</h3>
@@ -96,7 +99,11 @@ export default {
             time_end: '',
             check_out: '',
             check_in: '',
-            date:[],
+            // date:[],
+            date:{
+                start:null,
+                end:null
+            },
             
             items_room:[],
             Reserva:{},
@@ -109,11 +116,19 @@ export default {
         this.getHabitaciones()
         this.getFecha()
     },
+    watch: {
+        date: {
+            handler(val){
+                if (val.start==null) this.date.end=null
+            },
+            deep: true
+        }
+    },
     methods: {
         disabledRange: function (date) {
             let flag=false
             if (date < new Date(new Date().setHours(0, 0, 0, 0))) return true
-            
+            if (this.date.start&&date<=new Date(this.date.start)) return true
             this.fechas.forEach(element => {
                 var minDate = new Date(element.from).setHours(0, 0, 0, 0);
                 var maxDate =  new Date(element.to).setHours(0, 0, 0, 0);
@@ -123,11 +138,41 @@ export default {
         },
         checkOnRange(){
             let flag=false
+            if (this.date.start==null||this.date.end==null) return
+            let now=new Date(new Date().setHours(0, 0, 0, 0)).setHours(0, 0, 0, 0)
+            let startD=new Date(this.date.start).setHours(0, 0, 0, 0)
+            let endD=new Date(this.date.end).setHours(0, 0, 0, 0)
+            if(startD < now||endD < now) flag=true
+            if (startD>endD) {
+                this.date.start=null;this.date.end=null
+                this.$root.vtoast.show({message: 'la fecha de inicio es mayor que la final'})
+                return
+            }
+            this.fechas.forEach(element => {
+                var startdate = new Date(element.from).setHours(0, 0, 0, 0);
+                var enddate =  new Date(element.to).setHours(0, 0, 0, 0);
+                if ((startD >= startdate && startD <= enddate) ||(startdate >= startD && startdate <= endD)){
+                    flag=true
+                }
+            });
+            if (flag) {
+                this.date.start=null;this.date.end=null
+                this.$root.vtoast.show({message: 'porfavor agarra un rango valido y que no este entre las casillas deshabilitadas'})
+            }
+            return flag
+        },
+        /*checkOnRange(){
+            let flag=false
             if (this.date[0]==null||this.date[1]==null) return
             let now=new Date(new Date().setHours(0, 0, 0, 0)).setHours(0, 0, 0, 0)
             let startD=new Date(this.date[0]).setHours(0, 0, 0, 0)
             let endD=new Date(this.date[1]).setHours(0, 0, 0, 0)
             if(startD < now||endD < now) flag=true
+            if (startD>endD) {
+                this.date=[]
+                this.$root.vtoast.show({message: 'la fecha de inicio es mayor que la final'})
+                return
+            }
             this.fechas.forEach(element => {
                 var startdate = new Date(element.from).setHours(0, 0, 0, 0);
                 var enddate =  new Date(element.to).setHours(0, 0, 0, 0);
@@ -137,10 +182,10 @@ export default {
             });
             if (flag) {
                 this.date=[]
-                this.$root.vtoast.show({message: 'porfavor agarra un rango fuera de los rangos deshabilitados'})
+                this.$root.vtoast.show({message: 'porfavor agarra un rango valido y que no este entre las casillas deshabilitadas'})
             }
             return flag
-        },
+        },*/
         async getHabitaciones() {
             try {
                 const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/habitaciones/disponibles", {
@@ -337,7 +382,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: Pointer;
     font-size: 1.5rem !important;
 }
-
+.fechaInput {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg);
+    color: white !important;
+    opacity: 1;
+    cursor: Pointer;
+    font-size: 1.5rem !important;
+    width: 60% !important;
+}
 .text_outline {
     position: relative;
     top: 1rem !important;

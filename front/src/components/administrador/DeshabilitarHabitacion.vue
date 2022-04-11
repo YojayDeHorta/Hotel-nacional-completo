@@ -51,6 +51,7 @@ export default {
                 return;
                 }
                 this.$root.vtoast.show({message: 'habitacion cambiada exitosamente'})
+                this.$emit('notificacion','a')
                 this.loading=false
             } catch (error) {
                 console.log(error);
