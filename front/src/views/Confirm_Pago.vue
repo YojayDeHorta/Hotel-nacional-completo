@@ -2,7 +2,7 @@
     <div>
         <v-container class='Factura mt-5 mb-5'>
             <v-row style='background-color: rgb(255, 255, 255,0.6);border-radius: 1rem;' elevation='1'>
-                <v-col style='#border: 5px solid red !important;padding: 2.2rem;'>
+                <v-col xs='12' sm='12' md='6' lg='6' style='#border: 5px solid red !important;padding: 2.2rem;'>
                     <div class='header_factura '>
                         <section class='mb-1'>
                             <figure>
@@ -49,7 +49,7 @@
                             <section class='datos_tarjetas'>
                                 <v-card style='margin: 0 !important;padding: 0 !important;background-color: rgb(255, 255, 255,0.4) !important;' elevation="1">
                                     <v-card-title class='d-flex' style='margin: 0 !important;padding: 0 !important;#border:5px solid blue'>
-                                        <p style='#border: 5px solid black;width: 50%;'>&nbsp;&nbsp;&nbsp;Credit / debit card</p>
+                                        <p class='title_card' style='#border: 5px solid black;width: 50%;'>&nbsp;&nbsp;&nbsp;Credit / debit card</p>
                                         <p class='text-end' style='#border:4px solid red;width: 50%;'><img src="@/assets/Credito.png" alt="">&nbsp;&nbsp;&nbsp;</p>
                                     </v-card-title>
                                     <v-card-text>
@@ -81,47 +81,58 @@
                         </form>
                     </div>
                 </v-col>
-                <v-col class='check_info' style='#border:5px solid blue;padding: 1.5rem;'>
-                    <v-container class='check_container'>
-                        <div class='header_check'>
-                            <label>
-                                <small>Checkin</small>
-                                <p>Sat, 23 Apr 2022</p>
-                            </label>
-                            <label style='#border: 5px solid green;padding: 0 !important;margin: 0 !important;display: flex;justify-content: center;margin-left: 1rem;margin-right: 1rem;'>
-                                <v-icon style='font-size: 2.5rem !important;#border: 5px solid green;padding: 0 !important;margin: 0 !important;margin: auto !important;'>
-                                    mdi-arrow-right-thin
-                                </v-icon>
-                            </label>
-                            <label>
-                                <small>Checkin</small>
-                                <p>Sat, 23 Apr 2022</p>
-                            </label>
-                        </div>
-                        <div class='text-end'>
-                            <small>Reservation Total</small>
-                            <h2>
-                                € 116.10
-                            </h2>
-                            <small>(Taxes included)</small>
-                        </div>
-                        <v-container class='d-flex mt-5'>
-                            <figure style='width: 150px;margin-right: 1.5rem;'><img src="@/assets/cuarto_1.webp" alt="" width="100%"></figure>
-                            <h4>
-                                <small>1 room of the following type</small>
-                                <h4>Double Room (double bed)</h4>
-                                <small>2 adults</small>
-                            </h4>
-                        </v-container>
-                        <div class='text-end'>
-                            <p class='mt-5'>
-                                <v-text-field class='input' label="Code Prome" placeholder="Code Prome" append-icon="mdi-gift-open" outlined></v-text-field>
-                            </p>
-                        </div>
+                <v-col xs='12' sm='12' md='6' lg='6' class='check_info' style='#border:5px solid blue;padding: 1.5rem;'>
+                    <v-container class='check_container' fluid>
+                        <v-card style='#border: 5px solid red;padding: 2rem;' elevation='0'>
+                            <div class='header_check'>
+                                <label>
+                                    <small>Checkin</small>
+                                    <p>Sat, 23 Apr 2022</p>
+                                </label>
+                                <label style='#border: 5px solid green;padding: 0 !important;margin: 0 !important;display: flex;justify-content: center;margin-left: 1rem;margin-right: 1rem;'>
+                                    <v-icon style='font-size: 2.5rem !important;#border: 5px solid green;padding: 0 !important;margin: 0 !important;margin: auto !important;'>
+                                        mdi-arrow-right-thin
+                                    </v-icon>
+                                </label>
+                                <label>
+                                    <small>Checkin</small>
+                                    <p>Sat, 23 Apr 2022</p>
+                                </label>
+                            </div>
+                            <div class='text-end mt-5'>
+                                <small>Reservation Total</small>
+                                <h2>
+                                    € 116.10
+                                </h2>
+                                <small>(Taxes included)</small>
+                            </div>
+                            <v-container class='d-flex mt-5'>
+                                <figure style='width: 150px;margin-right: 1.5rem;'><img src="@/assets/cuarto_1.webp" alt="" width="100%"></figure>
+                                <section>
+                                    <small>1 room of the following type</small><br>
+                                    <small>Double Room (double bed)</small><br>
+                                    <small>2 adults</small>
+                                </section>
+                            </v-container>
+                            <div class='text-end'>
+                                <p class='mt-5'>
+                                    <v-text-field class='input' label="Code Prome" placeholder="Code Prome" append-icon="mdi-gift-open" outlined></v-text-field>
+                                </p>
+                            </div>
+                            <div class='text-end'>
+                                <v-btn class='btn_form' elevation="2" x-large style='background-color:#6c95e1 !important;color: white;'>Book Now
+                                    <v-icon class='ml-2'>
+                                        mdi-arrow-right-thin
+                                    </v-icon>
+                                </v-btn>
+                            </div>
+                        </v-card>
+                        <br><br>
                         <hr>
-                        <div>
-                            <hr>
-                            <v-container class='terminos_check'>
+                        <div class='mt-5'><br>
+                            <br>
+                            <br>
+                            <v-container class='terminos_check mt-5'>
                                 <section>
                                     <h4>Paymet</h4>
                                     <p>Prepayment required: 100% Credit Card</p>
@@ -140,13 +151,6 @@
                                 </h4>
                             </v-container>
                         </div>
-                        <div class='text-end'>
-                            <v-btn class='btn_form' elevation="2" x-large style='background-color:#6c95e1 !important;color: white;'>Book Now
-                                <v-icon class='ml-2'>
-                                    mdi-arrow-right-thin
-                                </v-icon>
-                            </v-btn>
-                        </div>
                     </v-container>
                 </v-col>
             </v-row>
@@ -164,6 +168,13 @@
     </div>
 </template>
 <style scoped>
+h4,.title_card,.header_check {
+    font-family: 'Epilogue', sans-serif;
+    font-family: 'GFS Didot', serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+
 .Factura {
     #border-radius: 5rem !important;
     #border: 5px solid red !important;
