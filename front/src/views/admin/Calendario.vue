@@ -184,16 +184,11 @@
       </v-card-title>
       <Configuracion/>
       <v-card-actions>
-                  <v-btn  color="error" class="mr-4" @click.stop="dialogConfig=false">Cancelar</v-btn>
+        <v-btn  color="error" class="mr-4" @click.stop="dialogConfig=false;getFechasDesactivadas()">Cancelar</v-btn>
       </v-card-actions>
       </v-card>
             
     </v-dialog>
-    <!-- SNACKBAR PARA MIRAR -->
-    <v-snackbar :color="colorSnackbar" v-model="snackbar" >
-    {{ mensaje }}
-    <v-btn color="error" class="ml-5"  @click="snackbar = false">cerrar</v-btn>
-    </v-snackbar>
   </v-row>
   
 </template>
@@ -231,9 +226,6 @@ import Configuracion from '../../components/administrador/Configuracion';
       dialog: false,
       dialogConfig:false,
       currentlyEditing: null,
-      mensaje:'',
-      snackbar:false,
-      colorSnackbar:'black',
       switchDesactivar:false,
       fechasDesactivadas:[],
     }),
@@ -325,37 +317,6 @@ import Configuracion from '../../components/administrador/Configuracion';
             console.log(error);
           }
         },
-        async addEvent(){
-            try {
-                if(this.name && this.start && this.end){
-                    /*await db.collection('eventos').add({
-                        name: this.name,
-                        details:this.details,
-                        start:this.start,
-                        end:this.end,
-                        color:this.color
-                    })*/
-                    this.getEvents()
-                    this.name=null
-                    this.details=null
-                    this.start=null
-                    this.end=null
-                    this.color='#1976D2'
-                    this.colorSnackbar='success'
-                    this.snackbar=true
-                    this.mensaje='tarea guardada correctamente'
-                    
-                }else{
-                    this.colorSnackbar='black'
-                    this.snackbar=true
-                    this.mensaje='Porfavor rellena todos los campos'
-                    
-                }
-                
-            } catch (error) {
-                console.log(error);
-            }
-        },
        async getEvents(){
            try {
               //  const snapshot= await db.collection('eventos').get();
@@ -368,43 +329,77 @@ import Configuracion from '../../components/administrador/Configuracion';
                   console.log(error);
                   return;
                 }
-                let ocupadas=0
-                let disponibles=0
-                let deshabilitado=0
+                let individual={ocupadas:0,disponibles:0,deshabilitado:0}
+                let doble={ocupadas:0,disponibles:0,deshabilitado:0}
+                let familiar={ocupadas:0,disponibles:0,deshabilitado:0}
+                  
+                  
+                  
+                
                 data.forEach(doc=>{
-                   if (doc.estado=='Ocupado') {doc.color='#FF673D', ocupadas++}
-                   else if(doc.estado=='Disponible'){
-                     doc.color='#66D7D1'
-                     doc.start=new Date().toISOString().substr(0, 10)
-                     doc.end=new Date().toISOString().substr(0, 10)
-                     disponibles++
-                   }else{
-                     doc.color='#181818'
-                     doc.start=new Date().toISOString().substr(0, 10)
-                     doc.end=new Date().toISOString().substr(0, 10)
-                     deshabilitado++
-                   } 
+                    if (doc.tipo_habitacion=='Individual') {
+                        if (doc.estado=='Ocupado') {doc.color='#FF673D',individual.ocupadas++}
+                        else if(doc.estado=='Disponible'){
+                          doc.color='#66D7D1'
+                          doc.start=new Date().toISOString().substr(0, 10)
+                          doc.end=new Date().toISOString().substr(0, 10)
+                          individual.disponibles++
+                        }else{
+                          doc.color='#181818'
+                          doc.start=new Date().toISOString().substr(0, 10)
+                          doc.end=new Date().toISOString().substr(0, 10)
+                          individual.deshabilitado++
+                        } 
+                    }
+                    if (doc.tipo_habitacion=='Doble') {
+                        if (doc.estado=='Ocupado') {doc.color='#FF673D',doble.ocupadas++}
+                        else if(doc.estado=='Disponible'){
+                          doc.color='#66D7D1'
+                          doc.start=new Date().toISOString().substr(0, 10)
+                          doc.end=new Date().toISOString().substr(0, 10)
+                          doble.disponibles++
+                        }else{
+                          doc.color='#181818'
+                          doc.start=new Date().toISOString().substr(0, 10)
+                          doc.end=new Date().toISOString().substr(0, 10)
+                          doble.deshabilitado++
+                        } 
+                    }
+                    if (doc.tipo_habitacion=='Familiar') {
+                        if (doc.estado=='Ocupado') {doc.color='#FF673D',familiar.ocupadas++}
+                        else if(doc.estado=='Disponible'){
+                          doc.color='#66D7D1'
+                          doc.start=new Date().toISOString().substr(0, 10)
+                          doc.end=new Date().toISOString().substr(0, 10)
+                          familiar.disponibles++
+                        }else{
+                          doc.color='#181818'
+                          doc.start=new Date().toISOString().substr(0, 10)
+                          doc.end=new Date().toISOString().substr(0, 10)
+                          familiar.deshabilitado++
+                        } 
+                    }
                    events.push(doc);
                 })
                 this.total.push(
                 {
-                    name:"Ocupadas: "+ocupadas, 
+                    name: `Individual-> O:${individual.ocupadas} D:${individual.disponibles} N:${individual.deshabilitado}`, 
                     end:new Date().toISOString().substr(0, 10),
                     start:new Date().toISOString().substr(0, 10),
                     color:'#FF673D',
-                    estado:'Ocupados'
+                    tipo_habitacion:'Individual'
                 },{
-                    name:"Disponibles: "+disponibles, 
+                    name:`Dobles-> O:${doble.ocupadas} D: ${doble.disponibles} N:${doble.deshabilitado}`,
                     end:new Date().toISOString().substr(0, 10),
                     start:new Date().toISOString().substr(0, 10),
                     color:'#66D7D1',
-                    estado:'Disponibles'
+                    tipo_habitacion:'Doble'
                 },{
-                    name:"Deshabilitados: "+deshabilitado, 
+                    name:`familiares-> O:${familiar.ocupadas} D: ${familiar.disponibles} N:${familiar.deshabilitado}`,
                     end:new Date().toISOString().substr(0, 10),
                     start:new Date().toISOString().substr(0, 10),
                     color:'#181818',
-                    estado:'Deshabilitados'
+                    tipo_habitacion:'Familiar'
                 });
                 // events.push(data)
                 // console.log(events);
@@ -415,41 +410,8 @@ import Configuracion from '../../components/administrador/Configuracion';
             console.log(error);
            }
        },
-       async deleteEvent(evento){
-           console.log(evento);
-            try {
-                // await db.collection('eventos').doc(evento.id).delete()
-                this.selectedOpen=false;
-                this.getEvents();
-                this.colorSnackbar='success'
-                this.snackbar=true
-                this.mensaje='tarea borrada exitosamente'
-            } catch (error) {
-                console.log(error);
-            }
-       },
-       editEvent(id){
-           this.currentlyEditing = id
-       },
        
-       async updateEvent(event){
-           try {
-              /*await db.collection('eventos').doc(event.id).update({
-                   name:event.name,
-                   details:event.details
-               })*/
-               this.selectedOpen=false;
-               this.currentlyEditing=null;
-               this.colorSnackbar='success'
-                this.snackbar=true
-                this.mensaje='tarea editada exitosamente'
-           } catch (error) {
-               console.log(error);
-           }
-       },
-       esperarFuncion(){
-            setTimeout(() => {  this.currentlyEditing=null }, 500);
-       },
+      
       viewDay ({ date }) {
         this.focus = date
         this.type = 'day'
@@ -484,7 +446,7 @@ import Configuracion from '../../components/administrador/Configuracion';
       },
       showEventRedirect ({ nativeEvent, event }) {
         if (this.type=='month') {
-            this.$router.push('/admin/habitaciones?filtro='+event.estado)
+            this.$router.push('/admin/habitaciones?filtro='+event.tipo_habitacion)
         }
         
       },

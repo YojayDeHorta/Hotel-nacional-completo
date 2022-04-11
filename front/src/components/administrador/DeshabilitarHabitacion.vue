@@ -47,10 +47,11 @@ export default {
                 },);
                 const { data, error } = await res.json();    
                 if (error) {
-                    this.$emit('notificacion',error)
+                    this.$root.vtoast.show({message: error})
                 return;
                 }
-                this.$emit('notificacion','habitacion cambiada exitosamente')
+                this.$root.vtoast.show({message: 'habitacion cambiada exitosamente'})
+                this.$emit('notificacion','a')
                 this.loading=false
             } catch (error) {
                 console.log(error);

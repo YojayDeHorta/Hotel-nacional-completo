@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { collection } = require('./User');
 
 const habitacionSchema = mongoose.Schema({
     name: {

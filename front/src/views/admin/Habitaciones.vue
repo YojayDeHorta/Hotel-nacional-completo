@@ -1,11 +1,14 @@
 <template>
   <v-container >
     <v-row>
-      <v-col cols="8">
+      <v-col cols="4">
         <v-btn color="primary" elevation="2" @click="dialog=true">agregar habitacion</v-btn>
       </v-col>
       <v-col cols="4">
-        <v-select :items="filtros" label="Filtros" v-model="filtroElegido" dense outlined></v-select>
+        <v-select :items="filtroEstadoOpciones" label="Filtrar por estado" v-model="filtroEstado" dense outlined></v-select>
+      </v-col>
+      <v-col cols="4">
+        <v-select :items="filtroTipoOpciones" label="Filtrar por tipo" v-model="filtroTipo" dense outlined></v-select>
       </v-col>
     </v-row>
     
@@ -17,7 +20,7 @@
         <v-card class="mx-auto" max-width="344" outlined>
           <v-list-item three-line>
             <v-list-item-content>
-              <div class="text-overline mb-4">{{habitacion.tipo_habitacion}}</div>
+              <div class="text-overline mb-4">{{habitacion.tipo_habitacion}} {{habitacion.personas}} pax</div>
               <v-list-item-title class="text-h5 mb-1">
                 {{habitacion.name}}
               </v-list-item-title>
@@ -33,7 +36,7 @@
           </v-list-item>
 
           <v-card-actions>
-            <DeshabilitarBoton v-if="habitacion.estado!='Ocupado'" :habitacion="habitacion" @notificacion="notificacion($event);getHabitaciones()"/>
+            <DeshabilitarBoton v-if="habitacion.estado!='Ocupado'" :habitacion="habitacion" @notificacion="getHabitaciones()"/>
             <v-btn outlined rounded text color="error" @click="idDelete=habitacion._id;dialogDelete=true"> eliminar </v-btn>
           </v-card-actions>
         </v-card>
@@ -102,11 +105,6 @@
             </v-card-actions>
         </v-card>
     </v-dialog>
-    <!-- snackbar para avisos -->
-    <v-snackbar v-model="snackbar.open">
-            {{ snackbar.text }}
-            <v-btn color="error" class="ml-5" @click="snackbar.open = false">cerrar</v-btn>
-    </v-snackbar>
   </v-container>
 </template>
 <script>
@@ -132,14 +130,12 @@ export default {
       },
       otro_habitacion:'',
       otro_servicio:'',
-      tipos_habitaciones: ['individual 1 pax', 'doble 2 pax', 'doble 3 pax', 'family room 3 pax', 'otro'],
+      tipos_habitaciones: ['Individual', 'Doble', 'Familiar', 'otro'],
       servicio_habitaciones: ['alojamiento + desayuno', 'alojamiento + media pension', 'otro'],
-      filtros: ['Ninguno', 'Ocupados', 'Disponibles', 'Deshabilitados'],
-      filtroElegido:'Ninguno',
-      snackbar:{
-        open:false,
-        text:''
-      },
+      filtroTipoOpciones: ['Ninguno', 'Individual', 'Doble', 'Familiar'],
+      filtroTipo:'Ninguno',
+      filtroEstadoOpciones: ['Ninguno', 'Ocupados', 'Disponibles', 'Deshabilitados'],
+      filtroEstado:'Ninguno',
       idDelete:'',
       dialogDelete:false
     
@@ -149,7 +145,7 @@ export default {
   created() {
 
     this.getHabitaciones();
-    if(this.$route.query.filtro)this.filtroElegido=this.$route.query.filtro
+    if(this.$route.query.filtro)this.filtroTipo=this.$route.query.filtro
   },
   mounted() {
     
@@ -158,29 +154,23 @@ export default {
     ...mapState(["token"]),
     getHabitacionesFiltro(){
         if (!this.habitaciones) return
-        if(this.filtroElegido=='Ocupados')return this.habitaciones.filter(habitacion => habitacion.estado == 'Ocupado')
-        if(this.filtroElegido=='Disponibles')return this.habitaciones.filter(habitacion => habitacion.estado == 'Disponible')
-        if(this.filtroElegido=='Deshabilitados')return this.habitaciones.filter(habitacion => habitacion.estado == 'Deshabilitado')
-        if(this.filtroElegido)return this.habitaciones
-        /*switch (this.filtroElegido) {
-          case 'Ocupados':
-            return this.habitaciones.filter(habitacion => habitacion.estado == 'Ocupado')
-          case 'Disponibles':
-            return this.habitaciones.filter(habitacion => habitacion.estado == 'Disponible')
-          case 'Deshabilitados':
-            return this.habitaciones.filter(habitacion => habitacion.estado == 'Deshabilitado')
-          default:
-            return this.habitaciones
-        }*/
+        let habiFiltro=this.habitaciones
+        if(this.filtroEstado=='Ocupados')habiFiltro=habiFiltro.filter(habitacion => habitacion.estado == 'Ocupado')
+        if(this.filtroEstado=='Disponibles')habiFiltro=habiFiltro.filter(habitacion => habitacion.estado == 'Disponible')
+        if(this.filtroEstado=='Deshabilitados')habiFiltro=habiFiltro.filter(habitacion => habitacion.estado == 'Deshabilitado')
+        
+        if(this.filtroTipo=='Individual')habiFiltro=habiFiltro.filter(habitacion => habitacion.tipo_habitacion == 'Individual')
+        if(this.filtroTipo=='Doble')habiFiltro=habiFiltro.filter(habitacion => habitacion.tipo_habitacion == 'Doble')
+        if(this.filtroTipo=='Familiar')habiFiltro=habiFiltro.filter(habitacion => habitacion.tipo_habitacion == 'Familiar')
+        // if(this.filtroTipo)
+        return habiFiltro
     }
   },
   methods: {
-    notificacion(mensaje,color){
-        this.snackbar.open=true
-        this.snackbar.text=mensaje
-    },
+    
     async getHabitaciones() {
       try {
+        
         const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/habitaciones", {
           headers: {
             "Content-Type": "application/json",
@@ -189,10 +179,10 @@ export default {
         });
         const { data, error } = await res.json();
         if (error) {
-          this.notificacion(error)
+          this.$root.vtoast.show({message: error})
           return;
         }
-        
+        console.log(data);
         this.habitaciones = data;
         // console.log(this.habitaciones);
       } catch (error) {
@@ -211,11 +201,11 @@ export default {
         },);
         const { data, error } = await res.json();    
         if (error) {
-          this.notificacion(error)
+          this.$root.vtoast.show({message: error})
           return;
         }
         this.getHabitaciones()
-        this.notificacion('habitacion agretada exitosamente')
+        this.$root.vtoast.show({message: 'habitacion agretada exitosamente'})
       } catch (error) {
         console.log(error);
       }
@@ -230,11 +220,11 @@ export default {
         },);
         const { data, error } = await res.json();    
         if (error) {
-          this.notificacion(error)
+          this.$root.vtoast.show({message: error})
           return;
         }
         this.getHabitaciones()
-        this.notificacion('habitacion eliminada exitosamente')
+        this.$root.vtoast.show({message: 'habitacion eliminada exitosamente'})
       } catch (error) {
         console.log(error);
       }

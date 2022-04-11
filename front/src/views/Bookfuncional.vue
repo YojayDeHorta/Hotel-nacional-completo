@@ -32,13 +32,16 @@
                             <h3>Check In</h3>
                             <p><input type="time" value="12:00" disabled></p>
                             <p>
-                                <date-picker v-model="date " type="date" range :disabled-date="disabledRange"></date-picker>
+                                <!-- <date-picker class="fechaInput" v-model="date " type="date" range :disabled-date="disabledRange" @change="checkOnRange()"></date-picker> -->
+                                <date-picker class="fechaInput" v-model="date.start" type="date" :disabled-date="disabledRange" @change="checkOnRange()"></date-picker>
                             </p>
                         </div>
                         <div class='row_table' id='row_table_2'>
                             <h3>Check Out</h3>
                             <p><input type="time" value="14:00" disabled></p>
-                            <p><input type="date" step="7"></p>
+                            <p>
+                                <date-picker class="fechaInput" v-model="date.end" type="date" :disabled="!date.start" :disabled-date="disabledRange" @change="checkOnRange()"></date-picker>
+                            </p>
                         </div>
                         <div class='row_table' id='row_table_3'>
                             <h3>Guest</h3>
@@ -96,37 +99,12 @@ export default {
             time_end: '',
             check_out: '',
             check_in: '',
-            date:[],
-            /* RESERVA   */
-
-
-            /*Reserva: { "name": 'Habitacion #1', "price": "$100", "img_url": require('@/assets/book_1.jpg'), 'person': '3' },
-
-            items_room: [{
-                    id: '001',
-                    name: 'Habitacion #1',
-                    price: '$100',
-                    img_url: require('@/assets/book_1.webp'),
-                    promo_code: '',
-                    person: 3
-                },
-                {
-                    id: '002',
-                    name: 'Habitacion #2',
-                    price: '$200',
-                    img_url: require('@/assets/cuarto_1.jpg'),
-                    promo_code: '',
-                    person: 2
-                },
-                {
-                    id: '003',
-                    name: 'Habitacion #3',
-                    price: '$300',
-                    img_url: require('@/assets/cuarto_4.jpg'),
-                    promo_code: '',
-                    person: 5
-                }
-            ],*/
+            // date:[],
+            date:{
+                start:null,
+                end:null
+            },
+            
             items_room:[],
             Reserva:{},
             fechas:[],
@@ -138,19 +116,82 @@ export default {
         this.getHabitaciones()
         this.getFecha()
     },
+    watch: {
+        date: {
+            handler(val){
+                if (val.start==null) this.date.end=null
+            },
+            deep: true
+        }
+    },
     methods: {
+        disabledRange: function (date) {
+            let flag=false
+            if (date < new Date(new Date().setHours(0, 0, 0, 0))) return true
+            if (this.date.start&&date<=new Date(this.date.start)) return true
+            this.fechas.forEach(element => {
+                var minDate = new Date(element.from).setHours(0, 0, 0, 0);
+                var maxDate =  new Date(element.to).setHours(0, 0, 0, 0);
+                if (date >= minDate && date <= maxDate )flag=true
+            });
+            return flag
+        },
+        checkOnRange(){
+            let flag=false
+            if (this.date.start==null||this.date.end==null) return
+            let now=new Date(new Date().setHours(0, 0, 0, 0)).setHours(0, 0, 0, 0)
+            let startD=new Date(this.date.start).setHours(0, 0, 0, 0)
+            let endD=new Date(this.date.end).setHours(0, 0, 0, 0)
+            if(startD < now||endD < now) flag=true
+            if (startD>endD) {
+                this.date.start=null;this.date.end=null
+                this.$root.vtoast.show({message: 'la fecha de inicio es mayor que la final'})
+                return
+            }
+            this.fechas.forEach(element => {
+                var startdate = new Date(element.from).setHours(0, 0, 0, 0);
+                var enddate =  new Date(element.to).setHours(0, 0, 0, 0);
+                if ((startD >= startdate && startD <= enddate) ||(startdate >= startD && startdate <= endD)){
+                    flag=true
+                }
+            });
+            if (flag) {
+                this.date.start=null;this.date.end=null
+                this.$root.vtoast.show({message: 'porfavor agarra un rango valido y que no este entre las casillas deshabilitadas'})
+            }
+            return flag
+        },
+        /*checkOnRange(){
+            let flag=false
+            if (this.date[0]==null||this.date[1]==null) return
+            let now=new Date(new Date().setHours(0, 0, 0, 0)).setHours(0, 0, 0, 0)
+            let startD=new Date(this.date[0]).setHours(0, 0, 0, 0)
+            let endD=new Date(this.date[1]).setHours(0, 0, 0, 0)
+            if(startD < now||endD < now) flag=true
+            if (startD>endD) {
+                this.date=[]
+                this.$root.vtoast.show({message: 'la fecha de inicio es mayor que la final'})
+                return
+            }
+            this.fechas.forEach(element => {
+                var startdate = new Date(element.from).setHours(0, 0, 0, 0);
+                var enddate =  new Date(element.to).setHours(0, 0, 0, 0);
+                if ((startD >= startdate && startD <= enddate) ||(startdate >= startD && startdate <= endD)){
+                    flag=true
+                }
+            });
+            if (flag) {
+                this.date=[]
+                this.$root.vtoast.show({message: 'porfavor agarra un rango valido y que no este entre las casillas deshabilitadas'})
+            }
+            return flag
+        },*/
         async getHabitaciones() {
             try {
                 const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/habitaciones/disponibles", {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                });
+                headers: {"Content-Type": "application/json",}});
                 const { data, error } = await res.json();
-                if (error) {
-                // this.notificacion(error)
-                return;
-                }
+                if (error) return
                 this.items_room=data
                 if (this.items_room.length> 0) {
                     this.Reserva=this.items_room[0]
@@ -161,32 +202,14 @@ export default {
                 console.log(error);
             }
         },
-        disabledRange: function (date) {
-            let flag=false
-            if (date < new Date(new Date().setHours(0, 0, 0, 0))) return true
-            
-            this.fechas.forEach(element => {
-                var minDate = new Date(element.from).setHours(0, 0, 0, 0);
-                var maxDate =  new Date(element.to).setHours(0, 0, 0, 0);
-                if (date >= minDate && date <= maxDate ){
-                flag=true
-                }
-            });
-            return flag
-        },
+        
         
         async getFecha() {
             try {
                 const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/config/fechanothabitable", {
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                });
+                headers: {"Content-Type": "application/json"},});
                 const { data, error } = await res.json();
-                if (error) {
-                console.log(error);
-                return;
-                }
+                if (error) {console.log(error);return}
                 this.fechas=JSON.parse(JSON.stringify(data))
             } catch (error) {
                 console.log(error);
@@ -359,7 +382,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: Pointer;
     font-size: 1.5rem !important;
 }
-
+.fechaInput {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg);
+    color: white !important;
+    opacity: 1;
+    cursor: Pointer;
+    font-size: 1.5rem !important;
+    width: 60% !important;
+}
 .text_outline {
     position: relative;
     top: 1rem !important;
