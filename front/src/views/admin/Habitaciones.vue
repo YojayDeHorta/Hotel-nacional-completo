@@ -102,11 +102,6 @@
             </v-card-actions>
         </v-card>
     </v-dialog>
-    <!-- snackbar para avisos -->
-    <v-snackbar v-model="snackbar.open">
-            {{ snackbar.text }}
-            <v-btn color="error" class="ml-5" @click="snackbar.open = false">cerrar</v-btn>
-    </v-snackbar>
   </v-container>
 </template>
 <script>
@@ -136,10 +131,6 @@ export default {
       servicio_habitaciones: ['alojamiento + desayuno', 'alojamiento + media pension', 'otro'],
       filtros: ['Ninguno', 'Ocupados', 'Disponibles', 'Deshabilitados'],
       filtroElegido:'Ninguno',
-      snackbar:{
-        open:false,
-        text:''
-      },
       idDelete:'',
       dialogDelete:false
     
@@ -175,12 +166,10 @@ export default {
     }
   },
   methods: {
-    notificacion(mensaje,color){
-        this.snackbar.open=true
-        this.snackbar.text=mensaje
-    },
+    
     async getHabitaciones() {
       try {
+        
         const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/habitaciones", {
           headers: {
             "Content-Type": "application/json",
@@ -189,10 +178,10 @@ export default {
         });
         const { data, error } = await res.json();
         if (error) {
-          this.notificacion(error)
+          this.$root.vtoast.show({message: error})
           return;
         }
-        
+        console.log(data);
         this.habitaciones = data;
         // console.log(this.habitaciones);
       } catch (error) {
@@ -211,11 +200,11 @@ export default {
         },);
         const { data, error } = await res.json();    
         if (error) {
-          this.notificacion(error)
+          this.$root.vtoast.show({message: error})
           return;
         }
         this.getHabitaciones()
-        this.notificacion('habitacion agretada exitosamente')
+        this.$root.vtoast.show({message: 'habitacion agretada exitosamente'})
       } catch (error) {
         console.log(error);
       }
@@ -230,11 +219,11 @@ export default {
         },);
         const { data, error } = await res.json();    
         if (error) {
-          this.notificacion(error)
+          this.$root.vtoast.show({message: error})
           return;
         }
         this.getHabitaciones()
-        this.notificacion('habitacion eliminada exitosamente')
+        this.$root.vtoast.show({message: 'habitacion eliminada exitosamente'})
       } catch (error) {
         console.log(error);
       }

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { collection } = require('./User');
 
 const fechaNotAvitableSchema = mongoose.Schema({
     from: {
@@ -16,4 +15,4 @@ const fechaNotAvitableSchema = mongoose.Schema({
     }
 },{collection:'fechasNotAvitable',versionKey: false })
 
-module.exports = mongoose.model('fechaNotAvitable', fechaNotAvitableSchema);
+module.exports = mongoose.model('FechaNotAvitable', fechaNotAvitableSchema);

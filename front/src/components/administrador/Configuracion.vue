@@ -17,8 +17,11 @@
         <v-col md="3" cols="12">
           <v-switch
             v-model="switchDesactivar"
+            :disabled="loadingDesactivar"
+            :loading="loadingDesactivar"
             flat
             :label="`Desactivar servicios`"
+            @change="setStatus()"
           ></v-switch>
         </v-col>
       </v-row>
@@ -34,10 +37,7 @@
       </v-row>
       <v-spacer></v-spacer>
     </v-form>
-    <v-snackbar v-model="snackbar.open">
-            {{ snackbar.text }}
-            <v-btn color="error" class="ml-5" @click="snackbar.open = false">cerrar</v-btn>
-    </v-snackbar>
+
   </v-card-text>
 </template>
 <script>
@@ -54,6 +54,7 @@ export default {
   data() {
     return {
       switchDesactivar: false,
+      loadingDesactivar:true,
       columnas:[
                 {text:'DESDE' ,value:'from', class:'black white--text'},
                 {text:'HASTA' ,value:'to', class:'black white--text'},
@@ -76,7 +77,7 @@ export default {
   },
   created() {
       this.getFecha()
-      
+      this.getStatus()
   }
   ,
    methods: {
@@ -107,13 +108,12 @@ export default {
         },);
         const { data, error } = await res.json();    
         if (error) {
-          this.notificacion(error)
+          this.$root.vtoast.show({message: error})
           return;
         }
         this.date=[]
         this.getFecha()
-        this.notificacion('Fecha agretada exitosamente')
-        
+        this.$root.vtoast.show({message: 'Fecha agretada exitosamente'})
 
       } catch (error) {
         console.log(error);
@@ -129,7 +129,7 @@ export default {
         });
         const { data, error } = await res.json();
         if (error) {
-          console.log(error);
+          this.$root.vtoast.show({message: error})
           return;
         }
         this.fechas=JSON.parse(JSON.stringify(data))
@@ -152,15 +152,48 @@ export default {
         },);
         const { data, error } = await res.json();    
         if (error) {
-          this.notificacion(error)
+          this.$root.vtoast.show({message: error})
           return;
         }
         this.getFecha()
-        this.notificacion('Fecha eliminada exitosamente')
+        this.$root.vtoast.show({message: 'Fecha eliminada exitosamente'})
       } catch (error) {
         console.log(error);
       }
-    }
+    },
+    async getStatus() {
+      try {
+        const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/config/status", {
+          headers: {"Content-Type": "application/json", },
+        });
+        const { data, error } = await res.json();
+        if (error) {
+          console.log(error);
+          return;
+        }
+        this.loadingDesactivar=false
+        this.switchDesactivar=data
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async setStatus() {
+      try {
+        this.loadingDesactivar=true
+        const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/config/status", {
+          method: 'POST',headers: {"Content-Type": "application/json","auth-token": this.token },
+        });
+        const { data, error } = await res.json();
+        if (error) {
+          this.$root.vtoast.show({message: error})
+          return;
+        }
+        this.loadingDesactivar=false
+        this.switchDesactivar=data
+      } catch (error) {
+        console.log(error);
+      }
+    },
   }
 };
 </script>

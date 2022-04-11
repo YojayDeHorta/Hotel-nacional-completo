@@ -1,8 +1,9 @@
 const router=require('express').Router()
 const HabitacionesController= require("../controllers/habitaciones")
 const validateToken= require("../controllers/validate-token")
+const status= require("../controllers/validate-status")
 
-
+status
 //hoteles
 router.get('/',validateToken, HabitacionesController.getHabitacion)
 router.post('/',validateToken, HabitacionesController.addHabitacion)

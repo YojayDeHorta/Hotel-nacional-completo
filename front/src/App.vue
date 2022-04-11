@@ -2,6 +2,7 @@
   <v-app>
      <Navbar v-if="isAdmin&&isLogin"/> 
     <Navbar1 v-if="!isAdmin"/>
+    <vtoast ref="vtoast"/>
     <v-main class="gris">
       <router-view />
     </v-main>
@@ -12,10 +13,12 @@
 import {mapActions} from 'vuex'
 import Navbar from './components/administrador/Navbar';
 import Navbar1 from './components/Navbar_1.vue'
+import vtoast from './components/vtoast.vue'
 export default {
   components: {
     Navbar1,
-    Navbar
+    Navbar,
+    vtoast
   },
   data() {
     return {
@@ -31,8 +34,14 @@ export default {
       return this.$route.name === 'calendario'||this.$route.name === 'habitaciones'||this.$route.name === 'login'
     }
   },
+  mounted() {
+    this.$root.vtoast = this.$refs.vtoast
+    
+
+  },
   methods: {
-    ...mapActions(['cerrarSesion'])
+    ...mapActions(['cerrarSesion']),
+    
   }
 }
 </script>

@@ -1,5 +1,4 @@
 const Joi = require('joi');
-const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');  
 const schemaRegister = Joi.object({
@@ -12,7 +11,7 @@ const schemaLogin = Joi.object({
     user: Joi.string().min(6).max(255).required(),
     password: Joi.string().min(6).max(1024).required()
 })
-
+/*
 exports.register= async (req,res)=>{
     // validate user
     const { error } = schemaRegister.validate(req.body)
@@ -41,7 +40,7 @@ exports.register= async (req,res)=>{
     } catch (error) {
         res.status(400).json({error})
     }
-}
+}*/
 exports.login= async (req,res)=>{
     // validaciones
     const { error } = schemaLogin.validate(req.body);
