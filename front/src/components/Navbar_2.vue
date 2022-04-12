@@ -47,10 +47,10 @@
                     <button class="dropbtn">Languaje
                         <i class="fa fa-caret-down"></i>
                     </button>
-                    <div class="dropdown-content">
-                        <a href="#">Español</a>
-                        <a href="#">Ingles</a>
-                        <a href="#">Frances</a>
+                    <div class="dropdown-content" @change='handleChange(event)'>
+                        <a value='es'>Español</a>
+                        <a value='eng'>Ingles</a>
+                        <a value='fra'>Frances</a>
                     </div>
                 </div>
             </div>
@@ -241,6 +241,12 @@ body {
 </style>
 <script>
 export default {
+    data: function(){
+        const lang = localStorage.getItem('lang') || 'en';
+        return{
+            lang: lang
+        }
+    },
     methods: {
         myFunction: function() {
             var x = document.getElementById("myTopnav");
@@ -249,6 +255,10 @@ export default {
             } else {
                 x.className = "topnav";
             }
+        },
+        handleChange(event){
+            localStorage.setItem('lang', event.target.value);
+            window.location.reload();
         }
     }
 }

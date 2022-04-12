@@ -1,5 +1,6 @@
 <template>
     <div>
+         <navbar_2 style='#border: 5px solid red;'></navbar_2>
         <v-container class='Factura mt-5 mb-5'>
             <v-row style='background-color: rgb(255, 255, 255,0.6);border-radius: 1rem;' elevation='1'>
                 <v-col xs='12' sm='12' md='6' lg='6' style='#border: 5px solid red !important;padding: 2.2rem;'>
@@ -328,11 +329,12 @@ input{
 </style>
 <script>
 import terminos from '../components/terminos_condiciones.vue'
+import navbar_2 from '../components/Navbar_2.vue'
 
 export default {
 
     components: {
-        terminos
+        terminos,navbar_2
     },
 
     data() {

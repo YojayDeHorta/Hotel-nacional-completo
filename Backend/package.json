@@ -19,7 +19,8 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.4",
-    "stripe": "^8.215.0"
+    "stripe": "^8.215.0",
+    "vue-i18n": "^9.1.9"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
