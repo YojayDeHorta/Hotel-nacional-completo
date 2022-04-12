@@ -55,17 +55,18 @@
                                     </v-card-title>
                                     <v-card-text>
                                         It will be debited from your card sometime before your arrival
-                                        <div fluid>
-                                            <div fluid>
+                                        <div class='mt-3' fluid>
+                                            <div class='mt-5' fluid>
                                                 <label for="card-number" >Credit Card</label>
                                                 <div id="card-number" class="tarjeta"></div>                                                
                                             </div>
-                                            <v-row>
+                                            <v-row class='mt-4' style='#border:5px solid red'>
                                                 <v-col cols="6">
                                                     <!-- <v-text-field class='input' label="Cardholder name" placeholder="Cardholder name" append-icon="mdi-credit-card-lock" outlined></v-text-field> -->
                                                     <label for="card-expiry">Expiry date</label>
                                                     <div id="card-expiry" class="tarjeta"></div>
                                                 </v-col>
+                                                <br>
                                                 <v-col cols="6">
                                                     <!-- <v-text-field class='input' label="Expiration" placeholder="Expiration" append-icon="mdi-credit-card-search" outlined></v-text-field> -->
                                                     <label for="card-cvc">cvc</label>
@@ -276,6 +277,9 @@ export default {
 </script>
 <style scoped>
 .tarjeta{
+    padding: 0.5rem;
+    #margin: 1rem;
+    #border: 5px solid red;
     border-bottom: 1px solid black;
 }
 h4,.title_card,.header_check {
