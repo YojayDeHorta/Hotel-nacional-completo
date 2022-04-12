@@ -57,6 +57,16 @@ exports.getHabitacionByDisponible= async (req,res)=>{
     }
    
 }
+exports.getHabitacionByDisponibleAndId= async (req,res)=>{
+    try {
+        const data = await Habitacion.find({_id:req.params.id,estado:"Disponible"});
+        res.json({error: null,data: data[0]})
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({error: 'Error interno del servidor'})
+    }
+   
+}
 exports.changeStateHabitacion= async (req,res)=>{
     try {
         let data=null

@@ -61,12 +61,7 @@ const routes = [
     
     component: () => import( '../views/Book.vue')
   },
-  {
-    path: '/bookfuncional',
-    name: 'bookfuncional',
-    
-    component: () => import( '../views/Bookfuncional.vue')
-  },
+  
     {
     path: '/services',
     name: 'services',
@@ -74,7 +69,7 @@ const routes = [
     component: () => import( '../views/Services.vue')
   },
      {
-    path: '/confirm_pago',
+    path: '/confirm_pago/:id',
     name: 'confirm_pago',
     
     component: () => import( '../views/Confirm_Pago.vue')
