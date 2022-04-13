@@ -3,8 +3,8 @@
         <navbar_2 />
         <div class='parallax' style='z-index:10' fluid>
             <div class='gallery_txt'>
-                <h1 class='text-center'>NUESTROS SERVICIOS TE ENCANTARÁN</h1>
-                <p class='text_gallery text-center mt-3'>
+                <h1 class='text-center'>  {{ $t('services_title') }}</h1>
+                <p class='text_gallery mt-3'>
                     Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Laudantium doloremque eveniet, eligendi sequi, rem officia? Omnis suscipit asperiores elit. Laudantium doloremque eveniet, eligendi sequi, rem officia? Omnis suscipit asperiores.
                 </p>
             </div>
@@ -12,9 +12,9 @@
         <div>
             <div class='title_services mt-5 mb-5'>
                 <br>
-                <h1 class='text-center mt-5 mb-5'>PREPARADOS PARA ATENDERTE</h1>
+                <h1 class='text-center mt-5 mb-5'>{{ $t('services_1') }}</h1>
                 <p class='text-center mt-5 mb-5'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Error pariatur rem laudantium illo sunt velit! Necessitatibus enim tenetur velit error. Illum beatae, facilis neque ullam, quibusdam hic quis sed accusamus?
+                    {{ $t('services_1_info') }}
                 </p>
             </div>
         </div>
@@ -24,9 +24,9 @@
                     <div class='div_img'><img src="@/assets/reuniones.webp" alt=""></div>
                     <div class='div_text'>
                         <div>
-                            <h1>Sala de reuniones</h1>
+                            <h1>{{ $t('services_2') }}</h1>
                             <p class='text-justify'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim delectus amet repellat veritatis ad illo, totam iusto voluptatum repudiandae fuga reiciendis ab odit labore doloribus consequatur accusamus. Autem, impedit, excepturi?
+                               {{ $t('services_2_info') }}
                             </p>
                         </div>
                     </div>
@@ -34,9 +34,9 @@
                 <v-col class='column' cols='12'>
                     <div class='div_text'>
                         <div>
-                            <h1>Restaurante</h1>
+                            <h1>{{ $t('services_3') }}</h1>
                             <p class='text-justify'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim delectus amet repellat veritatis ad illo, totam iusto voluptatum repudiandae fuga reiciendis ab odit labore doloribus consequatur accusamus. Autem, impedit, excepturi?
+                                {{ $t('services_3_info') }}
                             </p>
                         </div>
                     </div>
@@ -46,9 +46,9 @@
                     <div class='div_img'><img src="@/assets/cafeteria.webp" alt=""></div>
                     <div class='div_text'>
                         <div>
-                            <h1>Cafetería Moka</h1>
+                            <h1>{{ $t('services_4') }}</h1>
                             <p class='text-justify'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim delectus amet repellat veritatis ad illo, totam iusto voluptatum repudiandae fuga reiciendis ab odit labore doloribus consequatur accusamus. Autem, impedit, excepturi?
+                             {{ $t('services_4_info') }}
                             </p>
                         </div>
                     </div>
@@ -56,9 +56,9 @@
                 <v-col class='column' cols='12'>
                     <div class='div_text'>
                         <div>
-                            <h1>El bingo de Hotel Nacional</h1>
+                            <h1>{{ $t('services_5') }}</h1>
                             <p class='text-justify'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim delectus amet repellat veritatis ad illo, totam iusto voluptatum repudiandae fuga reiciendis ab odit labore doloribus consequatur accusamus. Autem, impedit, excepturi?
+                                {{ $t('services_5_info') }}
                             </p>
                         </div>
                     </div>
@@ -68,9 +68,9 @@
                     <div class='div_img'><img src="@/assets/salon.webp" alt=""></div>
                     <div class='div_text'>
                         <div>
-                            <h1>Salón social</h1>
+                            <h1>{{ $t('services_6') }}</h1>
                             <p class='text-justify'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim delectus amet repellat veritatis ad illo, totam iusto voluptatum repudiandae fuga reiciendis ab odit labore doloribus consequatur accusamus. Autem, impedit, excepturi?
+                                {{ $t('services_6_info') }}
                             </p>
                         </div>
                     </div>
@@ -80,47 +80,47 @@
         <br>
         <hr class='mt-5 mb-5' style='width: 80%;margin: auto;'>
         <v-container class='mt-5 mb-5'>
-            <h1 class='mt-5 mb-5 text-center'>PREPARADOS PARA ATENDERTE</h1>
+            <h1 class='mt-5 mb-5 text-center'>  {{ $t('services_title_2') }}</h1>
             <br>
             <v-row class='container_list'>
-                <div class='column'>
+                <div class='column' id='columna_table_1'>
                     <ul>
                         <li class='icon_check'>
-                            <v-icon>mdi-check-circle</v-icon>&nbsp; Wifi
+                            <v-icon>mdi-check-circle</v-icon>&nbsp;  {{ $t('services_info_1') }}
                         </li>
                         <li class='icon_check'>
-                            <v-icon>mdi-check-circle</v-icon>&nbsp; Aire acondicionado
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; {{ $t('services_info_2') }}
                         </li>
                         <li class='icon_check'>
-                            <v-icon>mdi-check-circle</v-icon>&nbsp; Recepción 24 horas
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; {{ $t('services_info_3') }}
                         </li>
                         <li class='icon_check'>
-                            <v-icon>mdi-check-circle</v-icon>&nbsp; Aparcamiento
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; {{ $t('services_info_4') }}
                         </li>
                         <li class='icon_check'>
-                            <v-icon>mdi-check-circle</v-icon>&nbsp; Aparcacoches las 24h
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; {{ $t('services_info_5') }}
                         </li>
                         <li class='icon_check'>
-                            <v-icon>mdi-check-circle</v-icon>&nbsp; Prensa
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; {{ $t('services_info_6') }}
                         </li>
                     </ul>
                 </div>
-                <div class='column'>
+                <div class='column' id='columna_table_2'>
                     <ul class='ul_list'>
                         <li class='icon_check'>
-                            <v-icon>mdi-check-circle</v-icon>&nbsp; Ascensor
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; {{ $t('services_info_7') }}
                         </li>
                         <li class='icon_check'>
-                            <v-icon>mdi-check-circle</v-icon>&nbsp; Guardaequipajes
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; {{ $t('services_info_8') }}
                         </li>
                         <li class='icon_check'>
-                            <v-icon>mdi-check-circle</v-icon>&nbsp; Servicio de lavandería y planchado
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; {{ $t('services_info_9') }}
                         </li>
                         <li class='icon_check'>
-                            <v-icon>mdi-check-circle</v-icon>&nbsp; Información turística, alquiler de bicicletas y de coches
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; {{ $t('services_info_10') }}
                         </li>
                         <li class='icon_check'>
-                            <v-icon>mdi-check-circle</v-icon>&nbsp; Fax / fotocopiadora
+                            <v-icon>mdi-check-circle</v-icon>&nbsp; {{ $t('services_info_11') }}
                         </li>
                     </ul>
                 </div>
@@ -161,7 +161,7 @@ p,li {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(7.9px);
     -webkit-backdrop-filter: blur(7.9px);
-    #border: 1px solid rgba(255, 255, 255, 0.46);
+    border: 1px solid rgba(255, 255, 255, 0.46);
     margin: auto !important;
     width: 80%;
     height: 300px;
@@ -169,6 +169,7 @@ p,li {
     justify-content: center;
     flex-direction: column;
     padding: 2.5rem;
+    text-align: center !important;
 }
 
 .div_img {
@@ -234,7 +235,7 @@ img {
     text-align: start;
     display: flex;
     flex-direction: column;
-    justify-content: center !important;
+    justify-content: center;
 }
 
 .container_list ul li {
@@ -274,6 +275,73 @@ img {
     .column p {
         width: 100%;
     }
+
+    .parallax{
+        width: 100% !important;
+        #height: 100% !important;
+    }
+
+    .gallery_txt {
+        width: 95% !important;
+        #border: 5px solid red;
+        text-align: justify !important;
+    }
+
+    #columna_table_1,#columna_table_2{
+        #border: 5px solid red !important;
+        padding: 0.7rem;
+    }
+
+     #columna_table_1 ul{
+        padding: 0 !important;
+        margin: 0 !important;
+        #border: 5px solid black;
+        #display: block;
+        #border: 4px solid yellow !important;
+        #margin-right: 1rem;
+        position: relative;
+        #left: 6%;
+
+
+     }
+
+     #columna_table_1 li{
+        position: relative;
+        left: 0rem !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        #border: 1px solid purple;
+        #text-align: start !important;
+        width: 100% !important;
+        margin-bottom:2rem !important ;
+         width: 90% !important;
+     }
+
+         #columna_table_2 ul{
+        padding: 0 !important;
+        margin: 0 !important;
+        #border: 5px solid black;
+        #display: block;
+        #border: 4px solid yellow !important;
+        position: relative;
+        top: -0.5rem;
+        flex-direction: column-reverse;
+         position: relative;
+        left: 8%;
+        top: 2.5%;
+
+     }
+
+     #columna_table_2 li{
+        position: relative;
+        left: 0rem !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        #border: 1px solid purple;
+        text-align: start !important;
+        width: 90% !important;
+        margin-bottom:2rem !important ;
+     }
 
 }
 </style>

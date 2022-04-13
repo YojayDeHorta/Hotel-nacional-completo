@@ -5,26 +5,25 @@
                 <v-img class='' src='@/assets/logo.jpg' style='width: 100px;'></v-img>
             </div>
             <div class='columna about mb-5'>
-                <h3> About</h3><br>
-                <p>About The Diamond </p>
-                <p>Contact us</p>
-                <p>Latest News</p>
-                <p> Jobs</p>
-                <p> Privacy Policy</p>
+                <h3>{{ $t('footer_about') }}</h3><br>
+                <p>{{ $t('footer_about_1') }}</p>
+                <p>{{ $t('footer_about_2') }}</p>
+                <p>{{ $t('footer_about_3') }}</p>
+                <p>{{ $t('footer_about_4') }}</p>
+                <p>{{ $t('footer_about_5') }}</p>
             </div>
             <div class='columna booking mb-5'>
-                <h3>Booking and services</h3> <br>
-                <p> Book Rooms</p>
-                <p> Offers </p>
-                <p>Vacation Packages</p>
-                <p> Gallery </p>
-                <p>Reviews</p>
+                <h3>{{ $t('footer_booking') }}</h3> <br>
+                <p>{{ $t('footer_booking_1') }}</p>
+                <p>{{ $t('footer_booking_2') }}</p>
+                <p>{{ $t('footer_booking_3') }}</p>
+                <p>{{ $t('footer_booking_4') }}</p>
+                <p>{{ $t('footer_booking_5') }}</p>
             </div>
             <div class='columna contact mb-5'>
-                <h3> Contact Us</h3><br>
+                <h3>{{ $t('footer_contacts') }}</h3><br>
                 <p>
-                    Hotel Reservation: <br>
-                    123-456-7890
+                    {{ $t('footer_contacts_1') }}
                 </p>
             </div>
             <div class='columna redes mb-5' id='social' fluid>
@@ -57,7 +56,7 @@
         <br>
         <hr class='derechos_hr' style='background: grey;width: 94%;margin: auto;'>
         <v-row class='derechos_autor' style="padding: 1.5rem;">
-            <h5 class='text-center' style='margin: auto;padding: 1rem;'>© 2022 Hotel Nacional | All Rights Reserved</h5>
+            <h5 class='text-center' style='margin: auto;padding: 1rem;'>{{ $t('footer_reserved') }}</h5>
         </v-row>
     </div>
 </template>

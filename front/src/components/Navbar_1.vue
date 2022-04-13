@@ -2,13 +2,16 @@
     <v-container class='container_navbar_1' fluid>
         <v-row class='row_navbar_1'>
             <v-col class='col_navbar text-end' cols='12' md='7' lg='7'>
+                <!--
                 <h4 class=''>Last COVID19 update - Security measures</h4>
-                <h1>
-                    {{}}
-                </h1>
+            -->
+                <h4>{{ $t('navbar_1_title') }}</h4>
+                <!--
+                <h1>{{ $t('welcome',{name:"TechvBlogs"}) }}</h1>
+            -->
             </v-col>
             <v-col class='col_navbar text-end' cols='12' md='5' lg='5'>
-                <h5> Join us
+                <h5> {{ $t('navbar_1_redes') }}
                     <v-btn color="blue-grey" class="ma-2 white--text" icon small style='background-color: #566175 !important'>
                         <v-icon color='white'>
                             mdi-instagram

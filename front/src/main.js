@@ -4,24 +4,23 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 import VueTelInputVuetify from 'vue-tel-input-vuetify/lib'
+import VueI18n from 'vue-i18n'
+import messages from './lang'
 import axios from 'axios'
-import i18n from './i18n'
-
-const lang = localStorage.getItem('lang') || 'en';
-
-axios.defaults.headers['Accept-Language'] = lang;
-
-document.documentElement.lang = lang;
 
 
-
-/*import Datepicker from 'vuejs-datepicker';
-*/
-/*import DatePicker from 'vue2-datepicker';
-Vue.use(DatePicker);*/
 
 Vue.config.productionTip = false
 
+
+Vue.use(VueI18n)
+
+
+export const i18n = new VueI18n({
+  locale: 'en',
+  fallbackLocale: 'en',
+  messages
+})
 
 Vue.use(VueTelInputVuetify, {
   vuetify,
@@ -32,6 +31,6 @@ new Vue({
   router,
   store,
   vuetify,
-  i18n,
+    i18n,
   render: h => h(App)
 }).$mount('#app')

@@ -10,9 +10,9 @@
                 <v-row class='row_img'>
                     <div class='cuadro_texto'>
                         <div>
-                            <h1 class='text-center mt-5'>WELCOME TO HOTEL NACIONAL</h1>
+                            <h1 class='text-center mt-5'>{{ $t('home_welcome') }}</h1>
                             <p> <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu magna mauris. Phasellus malesuada turpis nec massa elementum, id consectetur lectus vestibulum. Sed viverra sapien ut elit dapibus, a finibus diam fringilla. In tincidunt molestie odio quis efficitur. Integer fermentum efficitur ligula, a consectetur enim sodales id.
+                                 {{ $t('home_welcome_info') }}
                             </p>
                             <br>
                         </div>
@@ -27,17 +27,17 @@
                     </div>
                     <div class='cuadro_texto'>
                         <div>
-                            <h1 class='text-center mt-5'>OUR HERITAGE</h1>
+                            <h1 class='text-center mt-5'>{{ $t('home_heritage') }}</h1>
                             <p> <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu magna mauris. Phasellus malesuada turpis nec massa elementum, id consectetur lectus vestibulum. Sed viverra sapien ut elit dapibus, a finibus diam fringilla. In tincidunt molestie odio quis efficitur. Integer fermentum efficitur ligula, a consectetur enim sodales id.
+                               {{ $t('home_heritage_info') }}
                             </p>
                         </div>
                     </div>
                 </v-row>
             </v-container>
             <v-container fluid>
-                <h1 class='text-center'>Luxury Rooms</h1>
-                <p class='info_sliders text-center mt-3'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu magna mauris. Phasellus malesuada turpis nec massa elementum, id consectetur lectus vestibulum. Sed viverra sapien ut elit dapibus</p>
+                <h1 class='text-center'>{{ $t('home_luxury') }}</h1>
+                <p class='info_sliders text-center mt-3'>{{ $t('home_luxury_info') }}</p>
                 <v-sheet class="mx-auto  mt-3    " elevation="0" width="100%" style='background-color: transparent !important;'>
                     <v-slide-group v-model="model" class="pa-4" active-class="success" show-arrows>
                         <v-slide-item v-for="n in 5" :key="n" v-slot="{ active, toggle }">
@@ -60,6 +60,7 @@ import navbar_2 from '../components/Navbar_2'
 import pie_pagina from '../components/Footer'
 import comments from '../components/Comments'
 import anuncio from '../components/Anuncio'
+
 
 export default {
     data() {

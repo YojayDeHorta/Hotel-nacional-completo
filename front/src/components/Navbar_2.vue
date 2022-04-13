@@ -12,47 +12,53 @@
                 <a style='display: none;'></a>
                 <v-btn class='btn_route' to='/' depressed>
                     <a class='a_route'>
-                        Home
+                        {{ $t('home') }}
                     </a>
                 </v-btn>
                 <v-btn to='/services' class='btn_route' elevation='0' disable>
                     <a>
-                        Services
+                        {{ $t('services') }}
                     </a>
                 </v-btn>
                 <v-btn class='btn_route' to='/gallery' elevation='0' depressed>
                     <a class='a_route'>
-                        Gallery
+                        {{ $t('gallery') }}
                     </a>
                 </v-btn>
                 <v-btn class='btn_route' to='/offers' elevation='0'>
                     <a class='a_route'>
-                        Offers
+                        {{ $t('offers') }}
                     </a>
                 </v-btn>
                 <v-btn class='btn_route' to='/review' elevation='0'>
                     <a class='a_route'>
-                        Contact
+                        {{ $t('contact') }}
                     </a>
                 </v-btn>
                 <v-btn class='btn_route' to='/book' elevation='0'>
                     <a class='a_route'>
-                        BOOK NOW
+                        {{ $t('book') }}
                         <v-icon>
                             mdi-arrow-right-thin
                         </v-icon>
                     </a>
                 </v-btn>
+         
+                   <languaje></languaje> 
+          
+                
+                <!--
                 <div class="dropdown">
                     <button class="dropbtn">Languaje
                         <i class="fa fa-caret-down"></i>
                     </button>
-                    <div class="dropdown-content" @change='handleChange(event)'>
+                    <div class="dropdown-content" v-model="$i18n.locale" @change="changeLanguage">
                         <a value='es'>Español</a>
-                        <a value='eng'>Ingles</a>
+                        <a value='en'>Ingles</a>
                         <a value='fra'>Frances</a>
                     </div>
                 </div>
+            -->
             </div>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" v-on:click="myFunction()">&#9776;</a>
         </div>
@@ -240,13 +246,20 @@ body {
 }
 </style>
 <script>
+
+
+    import languaje from '../components/Language'
+
+
+
+
 export default {
-    data: function(){
-        const lang = localStorage.getItem('lang') || 'en';
-        return{
-            lang: lang
-        }
+
+    components:{
+        languaje
     },
+
+
     methods: {
         myFunction: function() {
             var x = document.getElementById("myTopnav");
@@ -256,9 +269,8 @@ export default {
                 x.className = "topnav";
             }
         },
-        handleChange(event){
-            localStorage.setItem('lang', event.target.value);
-            window.location.reload();
+      changeLanguage(obj){
+            localStorage.setItem('language',obj.target.value)
         }
     }
 }

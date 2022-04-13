@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
 import Login from '../views/admin/Login.vue'
+import { i18n } from '../main'
 
 
 Vue.use(VueRouter)
@@ -95,4 +96,12 @@ router.beforeEach((to, from, next) => {
     }
 
 })
+
+router.beforeEach((to, from, next) => {
+  i18n.locale = localStorage.getItem('language') || 'en'
+  return next()
+})
+
+
+
 export default router

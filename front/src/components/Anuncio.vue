@@ -2,7 +2,7 @@
     <v-container class='container' fluid>
         <div>
             <h3>
-                <strong>GUESTS</strong>
+                <strong>{{ $t('anuncio_guests') }}</strong>
                 <p>
                     10
                 </p>
@@ -10,7 +10,7 @@
         </div>
         <div>
             <h3>
-                <strong>CHECK IN</strong>
+                <strong>{{ $t('anuncio_checkin') }}</strong>
                 <p>
                     28 Feb
                 </p>
@@ -18,23 +18,25 @@
         </div>
         <div>
             <h3>
-                <strong>CHECK OUT</strong>
+                <strong>{{ $t('anuncio_checkout') }}</strong>
                 <p>
-                     28 Feb
+                     28 Marz
                 </p>
             </h3>
         </div>
         <div>
-            <h3>
-                <strong>PROMO CODE</strong>
+            <h3 class='promo'>
+                <strong >{{ $t('anuncio_promo') }}</strong>
+                <!--
                 <p>
                     PROMO CODE
                 </p>
+            -->
             </h3>
         </div>
         <div>
             <h3 class='h3_book' style='text-align:center !important;background-color: #5d85d0 !important'>
-                  <v-btn to='/book' class='btn_li' elevation="0" large x-large x-small style='background-color: #5d85d0 !important;color:white !important;width: 100%;'>BOOK NOW <v-icon>
+                  <v-btn to='/book' class='btn_li' elevation="0" large x-large x-small style='background-color: #5d85d0 !important;color:white !important;width: 100%;'>{{ $t('anuncio_book') }} <v-icon>
                         mdi-arrow-right-thin
                     </v-icon>
                 </v-btn>
@@ -48,6 +50,18 @@ export default {
 }
 </script>
 <style scoped>
+
+
+    .promo{
+        #border:4px solid red;
+       display: flex;
+       justify-content: center;
+    }
+
+    .promo strong{
+        margin: auto;
+    }
+
 
     h3{
         font-size: 1rem !important;
