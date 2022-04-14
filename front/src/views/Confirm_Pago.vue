@@ -32,7 +32,7 @@
                                         <v-text-field class='input' label="name" v-model="billingDetails.name" outlined></v-text-field>
                                     </p>
                                     <p>
-                                        <v-text-field class='input' label="country" v-model="billingDetails.address.country" outlined></v-text-field>
+                                        <v-text-field class='input' label="country"  outlined></v-text-field>
                                     </p>
                                 </div>
                                 <div>
@@ -106,10 +106,11 @@
                                     <p>{{$route.query.end}}</p>
                                 </label>
                             </div>
-                            <div class='text-end mt-5'>
+                            <div class='text-end mt-5' v-if="room.precio">
                                 <small>Reservation Total</small>
+                                <small> {{room.precio}}€ per day ({{getDays}} days)</small>
                                 <h2>
-                                    € {{room.precio}}
+                                    € {{room.precio*getDays}}
                                 </h2>
                                 <small>(Taxes included)</small>
                             </div>
@@ -117,15 +118,15 @@
                                 <figure style='width: 150px;margin-right: 1.5rem;'><img src="@/assets/cuarto_1.webp" alt="" width="100%"></figure>
                                 <section>
                                     <small>1 room of the following type</small><br>
-                                    <small v-if="room.tipo_habitacion=='doble'">Double room</small><br>
-                                    <small v-if="room.tipo_habitacion=='individual'">Single room</small><br>
-                                    <small v-if="room.tipo_habitacion=='familiar'">Family room</small><br>
+                                    <small v-if="room.tipo_habitacion=='Doble'">Double room</small><br>
+                                    <small v-if="room.tipo_habitacion=='Individual'">Single room</small><br>
+                                    <small v-if="room.tipo_habitacion=='Familiar'">Family room</small><br>
                                     <small>{{room.personas}} adults</small>
                                 </section>
                             </v-container>
                             <div class='text-end'>
                                 <p class='mt-5'>
-                                    <v-text-field class='input' label="Code Prome" placeholder="Code Prome" append-icon="mdi-gift-open" outlined></v-text-field>
+                                    <v-text-field class='input' label="Code Promo" placeholder="Code Promo" append-icon="mdi-gift-open" outlined></v-text-field>
                                 </p>
                             </div>
                             <div class='text-end'>
@@ -191,23 +192,45 @@ export default {
             elements:null,
             stripe:null,
             billingDetails:{
-                address:{
-                    state:null,
-                    postal_code:null,
-                },
+                // address:{
+                //     state:null,
+                //     postal_code:null,
+                // },
                 email: null,
                 name: null,
                 phone: null
+            },
+            roomCheckIn:{
+                start:null,
+                end:null,
+                roomId:null,
             },
             phone: null,
             room:{}
 
         }
     },
+    computed:{
+        getDays(){
+            let diffDays=0
+            if (this.roomCheckIn.start&&this.roomCheckIn.end) {
+                const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                const firstDate = new Date(this.roomCheckIn.start).setHours(0, 0, 0);
+                const secondDate = new Date(this.roomCheckIn.end).setHours(0, 0, 0);
+
+                 diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+            }
+            return diffDays
+        }
+    },
     mounted() {
         this.chargeStripe()
         this.getHabitacion()
-        
+        if (!(this.$route.query.start&&this.$route.query.end&&this.$route.params.id)) 
+            this.$router.push('/')
+        this.roomCheckIn.start=this.$route.query.start
+        this.roomCheckIn.end=this.$route.query.end
+        this.roomCheckIn.roomId=this.$route.params.id
     },
     methods: {
         async chargeStripe(){
@@ -240,9 +263,8 @@ export default {
         });
         if (!error) {
           const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/checkout", {
-          method: 'POST',
-          headers: {"Content-Type": "application/json" },
-          body: JSON.stringify({id:paymentMethod.id, amount:200*100})  
+          method: 'POST',headers: {"Content-Type": "application/json" },
+          body: JSON.stringify({id:paymentMethod.id, amount:200*100,billing_details:this.billingDetails,room:this.roomCheckIn})  
           },);
           const { data, error } = await res.json();
           if (error) {
@@ -264,7 +286,7 @@ export default {
                 const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/habitaciones/disponibles/"+this.$route.params.id, {
                 headers: {"Content-Type": "application/json",}});
                 const { data, error } = await res.json();
-                if (error) return
+                if (error){this.$root.vtoast.show({message: 'not found'});return} 
                 this.room=data
                 console.log(this.room);
                 // console.log(this.habitaciones);
@@ -278,8 +300,8 @@ export default {
 <style scoped>
 .tarjeta{
     padding: 0.5rem;
-    #margin: 1rem;
-    #border: 5px solid red;
+    /* #margin: 1rem;
+    #border: 5px solid red; */
     border-bottom: 1px solid black;
 }
 h4,.title_card,.header_check {

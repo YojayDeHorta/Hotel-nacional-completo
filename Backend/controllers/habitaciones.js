@@ -9,6 +9,9 @@ const schemaHabitacion = Joi.object({
     ocupado: Joi.boolean().required()
 })
 
+const schemaid= Joi.object({
+    id: Joi.string().pattern(/^[0-9a-fA-F]{24}$/).required()
+})
 exports.getHabitacion= async (req,res)=>{
     try {
         const data = await Habitacion.find({});
@@ -36,7 +39,9 @@ exports.addHabitacion= async (req,res)=>{
 
 exports.deleteHabitacion= async (req,res)=>{
     try {
-
+        const Derror = schemaid.validate(req.body);
+        if (Derror.error) return res.status(400).json({ error: Derror.error.details[0].message })
+        
         const data = await Habitacion.deleteOne({_id:req.body.id});
         res.json({error: null,data: 'ok'})
     } catch (error) {
@@ -59,6 +64,9 @@ exports.getHabitacionByDisponible= async (req,res)=>{
 }
 exports.getHabitacionByDisponibleAndId= async (req,res)=>{
     try {
+        const Derror = schemaid.validate(req.params);
+        if (Derror.error) return res.status(400).json({ error: Derror.error.details[0].message })
+
         const data = await Habitacion.find({_id:req.params.id,estado:"Disponible"});
         res.json({error: null,data: data[0]})
     } catch (error) {
@@ -69,6 +77,9 @@ exports.getHabitacionByDisponibleAndId= async (req,res)=>{
 }
 exports.changeStateHabitacion= async (req,res)=>{
     try {
+        const Derror = schemaid.validate({id:req.body._id});
+        if (Derror.error) return res.status(400).json({ error: Derror.error.details[0].message })
+
         let data=null
         if (req.body.estado=='Deshabilitado') 
         data = await Habitacion.updateOne({_id:req.body._id},{estado:'Disponible'})

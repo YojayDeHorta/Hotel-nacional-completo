@@ -22,7 +22,7 @@
                             </v-col>
                             <v-col class='text-end' cols='6'>
                                 
-                                    <v-btn style='background-color:black;color:white;margin: auto !important' elevation="2" x-large>{{Reserva.precio}}€</v-btn>
+                                    <v-btn style='background-color:black;color:white;margin: auto !important' elevation="2" x-large>{{Reserva.precio}}€ per day</v-btn>
                                 
                             </v-col>
                         </v-row>
@@ -46,8 +46,13 @@
                         <div class='row_table' id='row_table_3'>
                             <h3>Guest</h3>
                             <p style='padding: 1.7rem !important'>{{Reserva.personas}}</p>
-                            <p style='padding: 0 !important;'>
-                                <v-text-field class='text_outline' height='10px' outlined label="Promo Code" append-icon="mdi-gift" dark></v-text-field>
+                            <p style='padding: 1.7rem !important;' v-if="date.start&&date.end">
+                                <!-- <v-text-field class='text_outline' height='10px' outlined label="Promo Code" append-icon="mdi-gift" dark></v-text-field> -->
+                                {{getDays}} days
+                            </p>
+                            <p style='padding: 1.7rem !important;' v-else>
+                                <!-- <v-text-field class='text_outline' height='10px' outlined label="Promo Code" append-icon="mdi-gift" dark></v-text-field> -->
+                                no chosen day 
                             </p>
                         </div>
                     </v-container>
@@ -124,6 +129,19 @@ export default {
             deep: true
         }
     },
+    computed:{
+        getDays(){
+            let diffDays=null
+            if (this.date.start&&this.date.end) {
+                const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                const firstDate = new Date(this.date.start).setHours(0, 0, 0);
+                const secondDate = new Date(this.date.end).setHours(0, 0, 0);
+
+                 diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+            }
+            return diffDays
+        }
+    },
     methods: {
         redirect(){
             if (this.date.start&&this.date.end&&this.Reserva._id) {
@@ -146,7 +164,7 @@ export default {
         checkOnRange(){
             let flag=false
             if (this.date.start==null||this.date.end==null) return
-            let now=new Date(new Date().setHours(0, 0, 0, 0)).setHours(0, 0, 0, 0)
+            let now=new Date().setHours(0, 0, 0, 0)
             let startD=new Date(this.date.start).setHours(0, 0, 0, 0)
             let endD=new Date(this.date.end).setHours(0, 0, 0, 0)
             if(startD < now||endD < now) flag=true
@@ -166,6 +184,7 @@ export default {
                 this.date.start=null;this.date.end=null
                 this.$root.vtoast.show({message: 'porfavor agarra un rango valido y que no este entre las casillas deshabilitadas'})
             }
+            console.log(flag);
             return flag
         },
         /*checkOnRange(){

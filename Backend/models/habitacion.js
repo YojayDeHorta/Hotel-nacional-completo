@@ -44,6 +44,22 @@ const habitacionSchema = mongoose.Schema({
             min: 3,
             max: 255
         },
+        email: {
+            type: String,
+            min: 3,
+            max: 255
+        },
+        phone: {
+            type: String,
+            min: 3,
+            max: 255
+        },
+        dias_reservados: {
+            type: Number,
+        },
+        total_reservacion: {
+            type: Number,
+        },
     },
     fechaCreacion: {
         type: Date,
