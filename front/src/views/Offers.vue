@@ -2,15 +2,15 @@
     <div class='Marco_Secundario' fluid>
         <navbar_2 />
         <div class='contenedor_title'>
-            <h2 class='text-center'>Write a Review</h2>
+            <h2 class='text-center'>{{ $t('offers_title') }}</h2>
         </div>
         <br>
-        <h3 class='mt-5 mb-5' style='width: 89%;margin: auto;'>THE OFFERS AT THE HOTEL</h3>
+        <h3 class='mt-5 mb-5' style='width: 89%;margin: auto;'>{{ $t('offers_subtitle') }}</h3>
         <v-container class='table_1 mt-5 mb-5' style='' fluid>
             <v-row class='title_fondo' style='width: 90%;margin: auto;'>
                 <v-col class='column mb-5' cols='12' sm='6' lg='6' style='margin: 0;padding: 0'>
                     <h5 class='title'>
-                        Walk In Customer
+                        {{ $t('offers_title_1') }}
                     </h5>
                     <table class='mb-5' id='table_column_1'>
                         <tbody>
@@ -21,8 +21,7 @@
                                             mdi-check-circle
                                         </v-icon>
                                         <p>
-                                            Lunch at the international food
-                                            buffet restaurant
+                                              {{ $t('offers_table_1_1') }}
                                         </p>
                                     </h3>
                                 </td>
@@ -32,7 +31,7 @@
                                             mdi-check-circle
                                         </v-icon>
                                         <p>
-                                            Water and house wine included during lunch
+                                            {{ $t('offers_table_1_3') }}
                                         </p>
                                     </h3>
                                 </td>
@@ -44,7 +43,7 @@
                                             mdi-check-circle
                                         </v-icon>
                                         <p>
-                                            Use of hammocks
+                                             {{ $t('offers_table_1_2') }}
                                         </p>
                                     </h3>
                                 </td>
@@ -54,7 +53,7 @@
                                             mdi-check-circle
                                         </v-icon>
                                         <p>
-                                            towel per person
+                                            {{ $t('offers_table_1_4') }}
                                         </p>
                                     </h3>
                                 </td>
@@ -66,7 +65,7 @@
                                             mdi-check-circle
                                         </v-icon>
                                         <p>
-                                            Use of swimming pool facilities, water park, playground and entertainment <br> activities
+                                             {{ $t('offers_table_1_5') }}
                                         </p>
                                     </h3>
                                 </td>
@@ -76,7 +75,7 @@
                 </v-col> <br>
                 <v-col class='column mb-5' cols='12' sm='6' lg='6' style='margin: 0;padding: 0'>
                     <h5 class='title mt-5'>
-                        Ofter Details
+                   {{ $t('offers_title_2') }}
                     </h5>
                     <table class='mb-5' id='table_column_2'>
                         <tbody>
@@ -86,9 +85,8 @@
                                         <v-icon class='ico_check' color='black'>
                                             mdi-check-circle
                                         </v-icon>
-                                        <p>
-                                            From $35 per person <br>
-                                            ($20 for children)
+                                        <p style='width:70%'>
+                                            {{ $t('offers_table_2_1') }}
                                         </p>
                                     </h3>
                                 </td>
@@ -98,7 +96,7 @@
                                             mdi-calendar-blank-outline
                                         </v-icon>
                                         <p>
-                                            Daypass<br>
+                                            {{ $t('offers_table_2_2_1') }}<br>
                                             10:30 AM - 8:00 PM
                                         </p>
                                     </h3>
@@ -112,7 +110,7 @@
                                             mdi-calendar-blank-outline
                                         </v-icon>
                                         <p>
-                                            <strong>Lunch</strong> <br>
+                                            <strong>{{ $t('offers_table_2_3_1') }}</strong> <br>
                                             10:00 AM - 3:00 PM
                                         </p>
                                     </h3>
@@ -127,7 +125,7 @@
             <v-row class='title_fondo' style='width: 90%;margin: auto;'>
                 <v-col class='column mb-5' cols='12' sm='6' lg='6' style='margin: 0;padding: 0'>
                     <h5 class='title'>
-                        Online Order
+                        {{ $t('offers_title_3') }}
                     </h5>
                     <table class='mb-5' id='table_column_1'>
                         <tbody>
@@ -138,7 +136,9 @@
                                             mdi-check-circle
                                         </v-icon>
                                         <p>
-                                            Pool Access
+                                         
+                                             {{ $t('offers_table_3_1') }}
+                                        
                                         </p>
                                     </h3>
                                 </td>
@@ -148,7 +148,7 @@
                                             mdi-check-circle
                                         </v-icon>
                                         <p>
-                                            Paddel court , 1.30 minutes of play
+                                               {{ $t('offers_table_3_2') }}
                                         </p>
                                     </h3>
                                 </td>
@@ -160,7 +160,7 @@
                                             mdi-check-circle
                                         </v-icon>
                                         <p>
-                                            Water and soft drink
+                                            {{ $t('offers_table_3_3') }}
                                         </p>
                                     </h3>
                                 </td>
@@ -170,7 +170,10 @@
                                             mdi-check-circle
                                         </v-icon>
                                         <p>
+                                            {{ $t('offers_table_3_4') }}
+                                            <!--
                                             Pool Towel
+                                        -->
                                         </p>
                                     </h3>
                                 </td>
@@ -180,7 +183,7 @@
                 </v-col>
                 <v-col class='column mb-5' cols='12' sm='6' lg='6' style='margin: 0;padding: 0'>
                     <h5 class='title mt-5'>
-                        Ofter Details
+                         {{ $t('offers_title_4') }}
                     </h5>
                     <table class='mb-5' id='table_column_2'>
                         <tbody>
@@ -191,7 +194,7 @@
                                             mdi-check-circle
                                         </v-icon>
                                         <p>
-                                            From $35 per person <br>
+                                             {{ $t('offers_table_4_1') }} <br>
                                         </p>
                                     </h3>
                                 </td>
@@ -201,7 +204,7 @@
                                             mdi-calendar-blank-outline
                                         </v-icon>
                                         <p>
-                                            Pool<br>
+                                             {{ $t('offers_table_4_2_1') }}<br>
                                             10:30 AM - 8:00 PM
                                         </p>
                                     </h3>
@@ -215,7 +218,7 @@
                                             mdi-calendar-blank-outline
                                         </v-icon>
                                         <p>
-                                            <strong>Paddel</strong> <br>
+                                            <strong>{{ $t('offers_table_4_3_1') }}</strong> <br>
                                             10:00 AM - 8:00 PM
                                         </p>
                                     </h3>
@@ -227,7 +230,7 @@
             </v-row>
         </v-container>
         <div class='text-center'>
-            <v-btn class='btn_form' elevation="2" x-large style='background-color:#6c95e1 !important;color: white;'>Book Now
+            <v-btn class='btn_form' elevation="2" x-large style='background-color:#6c95e1 !important;color: white;'>{{ $t('offer_btn') }}
                 <v-icon class='ml-2'>
                     mdi-arrow-right-thin
                 </v-icon>
@@ -237,19 +240,19 @@
             <v-row style='width: 90%;margin: auto;'>
                 <div class='title_terminos' fluid>
                     <h6 class='title' style='padding: 0.5rem;width: 100%;'>
-                        FAQ
+                       {{ $t('offers_faq') }}
                     </h6>
                 </div>
                 <v-col cols='12' style='background-color: #ffffff;padding: 2.5rem'>
-                    <h3>Important Information</h3>
+                    <h3> {{ $t('offers_faq_1') }}</h3>
                     <p class='text-justify mt-3' style='font-size:1.2rem;'>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Deserunt officia repellendus, quo fugiat vitae. Expedita, maxime, voluptas fuga facere provident ea. Maiores itaque placeat, saepe facere necessitatibus natus, voluptatibus incidunt.
+                       {{ $t('offers_faq_1_info') }}
                     </p>
                 </v-col>
                 <v-col cols='12' style='background-color: #ffffff;padding: 2.5rem'>
-                    <h3>Cancellations</h3>
+                    <h3>{{ $t('offers_faq_2') }}</h3>
                     <p class='text-justify mt-3' style='font-size:1.2rem;'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque quaerat facere deserunt suscipit quam soluta, laudantium omnis numquam, veritatis debitis recusandae, officia, quisquam molestiae libero cumque laborum itaque praesentium sit.
+                           {{ $t('offers_faq_2_info') }}
                     </p>
                 </v-col>
             </v-row>

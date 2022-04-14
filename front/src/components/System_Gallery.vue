@@ -4,7 +4,7 @@
             <v-toolbar color="transparent" elevation='0' style='background-color: #f8f8f8 !important;'>
                 <template>
                     <v-tabs show-arrows class='' v-model="tabs" style='display: flex;justify-content: center; '>
-                        <v-tab v-for="i in Tabs_Name" v-bind:key="i">
+                        <v-tab v-for="i in Tabs_Name">
                             <p class='name_tabs'>
                                 {{i.name}}
                             </p>
@@ -87,6 +87,7 @@ export default {
     data() {
         return {
             tabs: null,
+            i:0,
             text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
             Tabs_Name: [{
                     name: "ALL"
@@ -107,6 +108,7 @@ export default {
                     name: "Pool"
                 }
             ],
+        /*
 
             ALL: [{
                     "title": "Jane Cooper",
@@ -139,7 +141,7 @@ export default {
                     "text": "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto 100",
                 }
             ]
-
+*/
         }
     }
 }

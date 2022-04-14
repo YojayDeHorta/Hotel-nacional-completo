@@ -10,7 +10,9 @@
             </div>
         </div><br>
         <div class='Marco_Secundario mt-5 mb-5'>
+        
             <system_gallery />
+
         </div>
         <pie_pagina class='pie_pagina' />
     </div>
