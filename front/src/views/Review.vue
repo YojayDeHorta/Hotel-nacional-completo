@@ -2,13 +2,13 @@
     <div class='Marco_Secundario' fluid>
         <navbar_2 />
         <div class='contenedor_title'>
-            <h2 class='text-center'>Write a Review</h2>
+            <h2 class='text-center'>{{ $t('review_title') }}</h2>
         </div>
         <v-container class='container-form mt-5' fluid>
             <v-form ref="form" v-model="valid" lazy-validation>
                 <v-container>
                     <v-row>
-                        <h2 class='text-center mt-5 mb-5' style='width: 100%;'>We are glad you stayed with us, let us know your thoughts</h2>
+                        <h2 class='text-center mt-5 mb-5' style='width: 100%;'>{{ $t('review_subtitle') }}</h2>
                         <br>
                         <div class='mt-5' fluid style='width: 100%;'>
                             <v-col cols='12' fluid>

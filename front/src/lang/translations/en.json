@@ -101,9 +101,12 @@
     "offers_faq_2_info": "to look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as the default text model, and a search will uncover many web sites that are still in their infancy. Various versions have evolved over the years, sometimes by accident,",
 
 
-
-
-
+    "review_title":"Write a Review",
+    "review_subtitle":"We are glad you stayed with us, let us know your thoughts",
+    "review_input_name":"Name",
+    "review_input_email":"Email",
+    "review_input_comment":"Review",
+    "review_puntuacion":"Satisfactory",
 
 
 

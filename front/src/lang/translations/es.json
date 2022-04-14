@@ -102,6 +102,17 @@
     "offers_faq_2_info": "para que parezca un inglés legible. Muchos paquetes de autoedición y editores de páginas web utilizan ahora Lorem Ipsum como modelo de texto por defecto, y una búsqueda de descubrirá muchos sitios web que aún están en pañales. A lo largo de los años han evolucionado varias versiones, a veces por accidente,",
 
 
+    "review_title": "Escriba una opinión",
+    "review_subtitle": "Nos alegramos de que se haya quedado con nosotros, háganos saber su opinión",
+    "review_input_name": "Nombre",
+    "review_input_email": "Correo electrónico",
+    "review_input_comment": "Consultar",
+    "review_puntuacion": "Satisfecho",
+
+
+
+
+
 
     "footer_about": "Acerca De",
     "footer_about_1": "Sobre El Diamante",
