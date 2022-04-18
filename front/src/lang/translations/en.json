@@ -101,17 +101,24 @@
     "offers_faq_2_info": "to look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as the default text model, and a search will uncover many web sites that are still in their infancy. Various versions have evolved over the years, sometimes by accident,",
 
 
-    "review_title":"Write a Review",
-    "review_subtitle":"We are glad you stayed with us, let us know your thoughts",
-    "review_input_name":"Name",
-    "review_input_email":"Email",
-    "review_input_comment":"Review",
-    "review_puntuacion":"Satisfactory",
+    "review_title": "Write a Review",
+    "review_subtitle": "We are glad you stayed with us, let us know your thoughts",
+    "review_input_name": "Name",
+    "review_input_email": "Email",
+    "review_input_comment": "Review",
+    "review_puntuacion": "Satisfactory",
 
 
+    "comment_title": "Testimonials",
+    "comment_subtitle": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form",
+    "review_puntuacion": "Satisfactory",
 
 
-
+    "book_title": "Book your stay",
+    "book_type_room": "Type of room",
+    "book_check_in": "Check In",
+    "book_check_out": "Check Out",
+    "book_check_guest": "Guest",
 
 
 

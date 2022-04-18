@@ -2,7 +2,7 @@
     <div fluid>
         <navbar_2 />
         <div class='contenedor_title mb-5'>
-            <h2 class='text-center'>Book your stay</h2>
+            <h2 class='text-center'>{{ $t('Book your stay') }}</h2>
         </div>
         <v-container class='Marco_Secundario' fluid>
             <v-row class='row_container'>
@@ -12,9 +12,9 @@
                             <v-col cols='6'>
                                 <br>
                                 <div class='div_select' style='padding: 0 !important;margin: 0 !important;display: flex;justify-content: flex-start;'>
-                                    <strong class='strong_type_room'>Type of room</strong>
+                                    <strong class='strong_type_room' style='padding:0 !Importante;margin:0 !important;#border:5px solid red'>{{ $t('book_type_room') }}</strong>
                                     <select class='form-select mb-5 mt-5' v-model="Reserva">
-                                        <option class='selected mb-5 mt-5' v-for="habitacion in items_room" :key="habitacion._id"  v-bind:value="habitacion" style='border: 1px solid red !important;'>
+                                        <option class='selected mb-5 mt-5' v-for="habitacion in items_room" :key="habitacion._id"  v-bind:value="habitacion" style='#border: 1px solid red !important;'>
                                             <span class='mt-5 mb-5' style='border: 5px solid red !important'>{{ habitacion.name }} ({{habitacion.tipo_habitacion}})</span>
                                         </option>
                                     </select>
@@ -29,7 +29,7 @@
                     </v-container>
                     <v-container class='container_table'>
                         <div class='row_table' id='row_table_1'>
-                            <h3>Check In</h3>
+                            <h3>{{ $t('book_check_in') }}</h3>
                             <p><input type="time" value="12:00" disabled></p>
                             <p>
                                 <!-- <date-picker class="fechaInput" v-model="date " type="date" range :disabled-date="disabledRange" @change="checkOnRange()"></date-picker> -->
@@ -37,14 +37,14 @@
                             </p>
                         </div>
                         <div class='row_table' id='row_table_2'>
-                            <h3>Check Out</h3>
+                            <h3>{{ $t('book_check_out') }}</h3>
                             <p><input type="time" value="14:00" disabled></p>
                             <p>
                                 <date-picker class="fechaInput" v-model="date.end" type="date" :disabled="!date.start" :disabled-date="disabledRange" @change="checkOnRange()"></date-picker>
                             </p>
                         </div>
                         <div class='row_table' id='row_table_3'>
-                            <h3>Guest</h3>
+                            <h3>{{ $t('book_check_guest') }}</h3>
                             <p style='padding: 1.7rem !important'>{{Reserva.personas}}</p>
                             <p style='padding: 1.7rem !important;' v-if="date.start&&date.end">
                                 <!-- <v-text-field class='text_outline' height='10px' outlined label="Promo Code" append-icon="mdi-gift" dark></v-text-field> -->
@@ -336,7 +336,7 @@ select option{
 /*
 .div_select select {
     padding: 0.5rem !important;
-    border-radius: 1rem;
+    #border-radius: 1rem;
     color: #6c95e1 !important;
     font-weight: bold !important;
     border: 0 !important;

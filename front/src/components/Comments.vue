@@ -1,8 +1,8 @@
 <template>
     <v-container class='container_tabs mb-5' fluid>
         <v-container class='Comentarios mb-5'>
-            <h1 class='text-center mt-3' style=''>Testimonials</h1>
-            <p style='width:70%;margin: auto;' class='texto_coment mt-5 text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tempor viverra parturient diam sagittis nec cras.</p>
+            <h1 class='text-center mt-3' style=''>{{ $t('comment_title') }}</h1>
+            <p style='width:70%;margin: auto;' class='texto_coment mt-5 text-center'>{{ $t('comment_subtitle') }}</p>
         </v-container>
         <v-card class='Tarjetas_Card' elevation='0'>
             <v-toolbar class='Tabs_Circle' color="transparent" elevation='0' dark>

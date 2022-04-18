@@ -10,7 +10,7 @@
         </div>
         <div>
             <h3>
-                <strong>{{ $t('anuncio_checkin') }}</strong>
+                <strong>{{ $t('anuncio_chekin') }}</strong>
                 <p>
                     28 Feb
                 </p>

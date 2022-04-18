@@ -8,7 +8,7 @@
     "contact": "Contactanos",
     "book": "Reserva Ahora",
     "anuncio_guests": "INVITADO",
-    "anuncio_checkin": "REGISTRARSE",
+    "anuncio_chekin": "REGISTRARSE",
     "anuncio_checkout": "VERIFICAR",
     "anuncio_promo": "CÓDIGO PROMOCIONAL",
     "anuncio_book": "RESERVA AHORA",
@@ -109,6 +109,17 @@
     "review_input_comment": "Consultar",
     "review_puntuacion": "Satisfecho",
 
+    "comment_title": "Testimonios",
+    "comment_subtitle": "Existen muchas variaciones de pasajes de Lorem Ipsum, pero la mayoría han sufrido alguna alteración",
+    "review_puntuacion": "Satisfactorio",
+
+
+
+    "book_title": "Reserve su Estancia",
+    "book_type_room": "Tipo de Habitación",
+    "book_check_in": "Registro de Entrada",
+    "book_check_out": "Comprobación de la Salida",
+    "book_check_guest": "Huéspedes",
 
 
 

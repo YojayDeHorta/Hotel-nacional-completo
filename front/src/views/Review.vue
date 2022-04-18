@@ -12,13 +12,13 @@
                         <br>
                         <div class='mt-5' fluid style='width: 100%;'>
                             <v-col cols='12' fluid>
-                                <v-text-field v-model="email" name="email" type="email" color="primary" label="Name" solo fluid></v-text-field>
+                                <v-text-field v-model="email" name="email" type="email" color="primary" :placeholder="$t('review_input_name')" solo fluid></v-text-field>
                             </v-col>
                             <v-col cols='12'>
-                                <v-text-field v-model="email" name="email" type="email" color="primary" label="Email" solo></v-text-field>
+                                <v-text-field v-model="email" name="email" type="email" color="primary" :placeholder="$t('review_input_email')" solo></v-text-field>
                             </v-col>
                             <v-col cols='12'>
-                                <v-textarea solo name="input-7-4" label="Review" height='140px'></v-textarea>
+                                <v-textarea solo name="input-7-4" :placeholder="$t('review_input_comment')" height='140px'></v-textarea>
                             </v-col>
                             <v-col cols='12'>
                                 <h3 class='star_service' style='height: 100%;width: 100%;'>
@@ -27,7 +27,7 @@
                                     <br>
                                     <p class='mt-5' style='height:auto;width: 37%;'>
                                         <strong style="margin: auto  !important;">
-                                            Satisfactory
+                                            {{ $t('review_puntuacion') }}
                                         </strong>
                                     </p>
                                 </h3>
