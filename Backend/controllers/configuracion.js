@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const fechaNotAvitable = require('../models/FechaNotAvitable');
+const fechaNotAvitable = require('../models/fechanohabitable');
 const schemaFecha = Joi.object({
     from: Joi.date(),
     to: Joi.date().min(Joi.ref('from')),

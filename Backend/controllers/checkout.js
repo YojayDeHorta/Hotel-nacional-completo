@@ -1,6 +1,6 @@
 const Stripe=require("stripe")
-const Habitacion = require('../models/Habitacion');
-const fechaNotAvitable = require('../models/FechaNotAvitable');
+const Habitacion = require('../models/habitacion');
+const fechaNotAvitable = require('../models/fechanohabitable');
 const Joi = require('joi');
 const stripe=new Stripe(process.env.STRIPE)
 const schemaCompra= Joi.object({

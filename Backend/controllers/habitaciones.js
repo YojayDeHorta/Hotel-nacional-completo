@@ -1,11 +1,12 @@
 const Joi = require('joi');
-const Habitacion = require('../models/Habitacion');
+const Habitacion = require('../models/habitacion');
 const jwt = require('jsonwebtoken');  
 const schemaHabitacion = Joi.object({
     name: Joi.string().min(3).max(255).required(),
     tipo_habitacion: Joi.string().min(3).max(255).required(),
     servicio: Joi.string().min(3).max(255).required(),
     precio: Joi.number().min(1).required(),
+    personas: Joi.number().min(1).required(),
     ocupado: Joi.boolean().required()
 })
 
