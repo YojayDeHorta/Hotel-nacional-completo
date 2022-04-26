@@ -205,7 +205,7 @@ export default {
           return;
         }
         this.getHabitaciones()
-        this.$root.vtoast.show({message: 'habitacion agretada exitosamente'})
+        this.$root.vtoast.show({message: 'habitacion agregada exitosamente'})
       } catch (error) {
         console.log(error);
       }

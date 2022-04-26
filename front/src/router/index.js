@@ -33,6 +33,12 @@ const routes = [
     meta: {requireAuth: true}
   },
   {
+    path: '/admin/cupon',
+    name: 'cupon',
+    component: () => import( '../views/admin/Cupon.vue'),
+    meta: {requireAuth: true}
+  },
+  {
     path: '/',
     name: 'home',
     component: () => import( '../views/HomeView.vue')
@@ -61,6 +67,12 @@ const routes = [
     name: 'book',
     
     component: () => import( '../views/Book.vue')
+  },
+  {
+    path: '/bookold',
+    name: 'bookold',
+    
+    component: () => import( '../views/Bookold.vue')
   },
   
     {

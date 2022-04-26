@@ -109,10 +109,18 @@
                             <div class='text-end mt-5' v-if="room.precio">
                                 <small>Reservation Total</small>
                                 <small> {{room.precio}}€ per day ({{getDays}} days)</small>
-                                <h2>
-                                    € {{room.precio*getDays}}
-                                </h2>
-                                <small>(Taxes included)</small>
+                                
+                                <h2 v-if="!promo.porcentaje">€ {{getPrice}}</h2>
+                                
+                                <div v-else>
+                                    <h2>€ {{getPrice}}</h2>
+                                    <div class="text-decoration-line-through red--text">€ {{room.precio*getDays}}</div> <!-- andersons ponlo bonito -->
+                                    
+                                </div>
+                                    
+                                
+                                <small>(Taxes included) </small>
+                                <small v-if="promo.porcentaje">{{promo.porcentaje}}% discount</small>
                             </div>
                             <v-container class='d-flex mt-5'>
                                 <figure style='width: 150px;margin-right: 1.5rem;'><img src="@/assets/cuarto_1.webp" alt="" width="100%"></figure>
@@ -126,7 +134,9 @@
                             </v-container>
                             <div class='text-end'>
                                 <p class='mt-5'>
-                                    <v-text-field class='input' label="Code Promo" placeholder="Code Promo" append-icon="mdi-gift-open" outlined></v-text-field>
+                                    <v-text-field class='input' label="Code Promo" placeholder="Code Promo" append-icon="mdi-gift-open" v-model="nombreCupon" outlined></v-text-field>
+                                    <v-btn class="primary mr-2" @click="searchPromo()" :disabled="!nombreCupon">Apply promo</v-btn>
+                                    <v-btn class="red--text" v-if="promo.porcentaje" icon @click="promo.porcentaje=null;promo.nombreCupon=null">X</v-btn>
                                 </p>
                             </div>
                             <div class='text-end'>
@@ -206,7 +216,12 @@ export default {
                 roomId:null,
             },
             phone: null,
-            room:{}
+            room:{},
+            nombreCupon:'',
+            promo:{
+                nombreCupon:null,
+                porcentaje:null,
+            }
 
         }
     },
@@ -221,6 +236,15 @@ export default {
                  diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
             }
             return diffDays
+        },
+        getPrice(){
+            if (this.promo.porcentaje) {
+                console.log(this.promo);
+                let value=this.room.precio*this.getDays
+                let discount=this.promo.porcentaje/100
+                return value-(value*discount)
+            }
+            return this.room.precio*this.getDays
         }
     },
     mounted() {
@@ -264,7 +288,7 @@ export default {
         if (!error) {
           const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/checkout", {
           method: 'POST',headers: {"Content-Type": "application/json" },
-          body: JSON.stringify({id:paymentMethod.id, amount:200*100,billing_details:this.billingDetails,room:this.roomCheckIn})  
+          body: JSON.stringify({id:paymentMethod.id, amount:200*100,billing_details:this.billingDetails,room:this.roomCheckIn,discount:this.promo.nombreCupon})  
           },);
           const { data, error } = await res.json();
           if (error) {
@@ -294,7 +318,21 @@ export default {
                 console.log(error);
             }
         },
+       async searchPromo(){
+           try {
+               const res = await fetch(process.env.VUE_APP_BASE_URL+"/api/habitaciones/cupon", {
+                method: 'POST',headers: {"Content-Type": "application/json"},body: JSON.stringify({nombreCupon:this.nombreCupon})});
+                const { data, error } = await res.json();
+                if (error){this.$root.vtoast.show({message: 'error'});return} 
+                if (!data) {this.$root.vtoast.show({message: 'Code not found'});return}
+                this.promo=data  
+                this.$root.vtoast.show({message: 'code found!'});                  
+           } catch (error) {
+               console.log(error);
+           }
+       }
     },
+    
 }
 </script>
 <style scoped>

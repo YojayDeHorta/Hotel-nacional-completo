@@ -1,6 +1,7 @@
 const Stripe=require("stripe")
 const Habitacion = require('../models/habitacion');
 const fechaNotAvitable = require('../models/fechanohabitable');
+const cupon = require('../models/cupon');
 const Joi = require('joi');
 const stripe=new Stripe(process.env.STRIPE)
 const schemaCompra= Joi.object({
@@ -43,7 +44,7 @@ function checkOnRange(start,end,fechas){
 }
 exports.stripeCheckout= async(req,res)=>{
     try {
-        const {id,room,billing_details}=req.body
+        const {id,room,billing_details,discount}=req.body
 
         const { error } = schemaCompra.validate(billing_details);
         if (error) {console.log(error);return res.status(400).json({ error: 'hay un error con sus datos' })}
@@ -55,8 +56,19 @@ exports.stripeCheckout= async(req,res)=>{
         if (data.length<=0) res.status(400).json({error:'error buscando habitacion, intente de nuevo'})
         let habitacion=data[0]
         let days=getDays(room.start,room.end)
-        let amount=habitacion.precio*days*100
+        let total=habitacion.precio*days
+        const dataCupon = await cupon.find({nombreCupon:discount});
+        if(dataCupon[0]){
+          if (dataCupon[0].usos>=dataCupon[0].limite) res.json({error: null,data: 'limite maximo del cupon alcanzado, intente mas tarde'})
+          else {
+            console.log(dataCupon[0]);
+              let descuento=dataCupon[0].porcentaje/100
+              total=total-(total*descuento)
+          }
+        }
+        
 
+        let amount=total*100
         
         if(amount==0) return res.status(400).json({error:'error interno'})
         const fechas = await fechaNotAvitable.find({});
@@ -71,7 +83,7 @@ exports.stripeCheckout= async(req,res)=>{
         })
         if (payment.status=='succeeded') {
           billing_details.dias_reservados=days
-          billing_details.total_reservacion=amount
+          billing_details.total_reservacion=total
           let dataHabitacion = await Habitacion.updateOne({_id:room.roomId},{
               usuario:billing_details,
               start:room.start,
@@ -79,7 +91,7 @@ exports.stripeCheckout= async(req,res)=>{
               estado:'Ocupado',
 
           })
-        }/**/
+        }
         res.json({
             error: null,
             data: 'ok'

@@ -59,7 +59,12 @@
             </v-list-item-icon >
             <v-list-item-title >Habitaciones</v-list-item-title>
           </v-list-item>
-          
+          <v-list-item :to="{name: 'cupon'}">
+            <v-list-item-icon>
+              <v-icon>mdi-file-table</v-icon>
+            </v-list-item-icon >
+            <v-list-item-title >Cupones</v-list-item-title>
+          </v-list-item>
 
         </v-list-item-group>
       </v-list>

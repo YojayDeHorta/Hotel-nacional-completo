@@ -31,7 +31,7 @@ export default {
       return this.$route.name !== 'login'
     },
     isAdmin() {
-      return this.$route.name === 'calendario'||this.$route.name === 'habitaciones'||this.$route.name === 'login'
+      return this.$route.name === 'calendario'||this.$route.name === 'habitaciones'||this.$route.name === 'login'||this.$route.name === 'cupon'
     }
   },
   mounted() {
